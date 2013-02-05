@@ -1,0 +1,28 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" 
+    android:background="@color/background">
+
+    <ListView 
+        android:id="@+id/controllerList"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/addController">
+    </ListView>
+    
+    <Button
+        android:id="@+id/addController"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+        android:minHeight="50dp"
+        android:textColor="@color/button_text_color"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_controller"
+        android:background="@drawable/add_button"
+        android:onClick="addController"/>
+
+</RelativeLayout>

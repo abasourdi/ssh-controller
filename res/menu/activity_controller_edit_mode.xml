@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/quit_edit_mode"
+        android:onClick="quitEditMode"/>
+    
+    
+    <item
+        android:orderInCategory="50"
+        android:showAsAction="never"
+        android:title="@string/add_circular_button"
+        android:onClick="showMenuCircularButtons"/>
+    
+    
+    <item
+        android:orderInCategory="50"
+        android:showAsAction="never"
+        android:title="@string/add_rectangular_button"
+        android:onClick="showMenuRectangularButtons"/>
+
+</menu>

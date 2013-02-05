@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<color name="red">#ff0000</color>
+<color name="green">#00ff00</color>
+<color name="blue">#0000ff</color>
+<color name="white">#ffffff</color>
+<color name="black">#000000</color>
+
+
+<color name="background">#303030</color>
+
+<color name="button_top_blue">#3b5998</color>
+<color name="button_bottom_blue">#8b9dc3</color>
+<color name="button_border">#f7f7f7</color>
+<color name="button_text_color">#dfe3ee</color>
+
+<color name="edit_background">#556b2f</color>
+
+<color name="top_red">#98593b</color>
+<color name="bottom_red">#c39d8b</color>
+
+<color name="top_green">#3b9859</color>
+<color name="bottom_green">#8bc39d</color>
+
+<color name="top_yellow">#98983b</color>
+<color name="bottom_yellow">#c3c38d</color>
+
+<color name="top_blue">#3b5998</color>
+<color name="bottom_blue">#8b9dc3</color>
+
+<color name="text_color">#dfe3ee</color>
+</resources>
