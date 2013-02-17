@@ -21,14 +21,9 @@ public class SshFile {
 		setDirectory(lsPath);
 	}
 	
-	public SshFile(String info, String lsPath, boolean isWindows) {
-		Log.i("toto", "info: "+info+" win "+isWindows);
-		if(isWindows){
-			name = info.substring(56);
-		}else{
-			name = info.substring(52);
-		}
-		isDirectory = info.substring(0, 1).equalsIgnoreCase("d");
+	public SshFile(String rights, String name, String lsPath) {
+		this.name=name;
+		isDirectory = rights.substring(0, 1).equalsIgnoreCase("d");
 		isReadable = true;
 		isExecutable = true;
 		setDirectory(lsPath);
@@ -43,7 +38,7 @@ public class SshFile {
 			} else if (lsPath.lastIndexOf("\\") != -1) {
 				directory = lsPath + "\\";
 			}else{
-				//TODO INVESTIAGE
+				//TODO INVESTIGATE
 				directory="/";
 			}
 		}

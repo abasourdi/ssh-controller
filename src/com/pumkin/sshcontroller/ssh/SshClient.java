@@ -19,8 +19,8 @@ public class SshClient {
 
 	String currentPath = "";
 
-	boolean isWindows=false;
-	
+//	boolean isWindows = false;
+
 	public SshClient(SshConfiguration configuration) {
 		this.configuration = configuration;
 	}
@@ -38,7 +38,7 @@ public class SshClient {
 			session.setUserInfo(ui);
 			session.setTimeout(20000);
 			session.connect();
-			
+
 			if (isConnected()) {
 				return true;
 			}
@@ -54,10 +54,11 @@ public class SshClient {
 		if (tmpRes.size() > 0) {
 			if ("0".equals(tmpRes.get(tmpRes.size() - 1))) {
 				System.out.println("returning path: " + tmpRes.get(0));
-				isWindows=false;
+//				isWindows = false;
 				return tmpRes.get(0).trim();
 			}
-//			Log.i(this.getClass().toString(), "ignoring as pwd doesn't work");
+			// Log.i(this.getClass().toString(),
+			// "ignoring as pwd doesn't work");
 			System.out.println("ignoring");
 		}
 
@@ -66,39 +67,50 @@ public class SshClient {
 		tmpRes = execute("cmd /c chdir", true);
 		if (tmpRes.size() > 0) {
 			if ("0".equals(tmpRes.get(tmpRes.size() - 1))) {
-				isWindows=true;
+//				isWindows = true;
 				return tmpRes.get(0).trim();
 			}
 			Log.i(this.getClass().toString(), "ignoring as cmd doesn't work");
 		}
-		// => GO TO BASE DIRECTORY AS NO IDEA
 		return "/";
 	}
 
 	public ArrayList<SshFile> ls(String path) {
 		String command;
-		if(isWindows){
-			command = "ls -l '" + path + "'";
-		}else{
-			command = "/bin/ls -l '" + path + "'";
-		}
+//		if (isWindows) {
+//			command = "ls -l '" + path + "'";
+//		} else {
+//			// command = "ls -lrth '" + path + "'| tr -s ' ' | cut -d' ' -f1,9";
+//			command = "ls -l '" + path + "'";
+//		}
+		command = "ls -l '" + path + "'";
+		/*
+		 * Classic ls command is 1 rights
+		 */
 		ArrayList<String> tmpFiles = execute(command, true);
 		ArrayList<SshFile> res = new ArrayList<SshFile>();
-		if (tmpFiles.size() > 1
-				&& tmpFiles.get(tmpFiles.size() - 1).equals("0")) {
-			for (int i = 1; i < tmpFiles.size() - 1; i++) {
-				res.add(new SshFile(tmpFiles.get(i), path, isWindows));
+		for (int i = 1; i < tmpFiles.size() - 1; i++) {
+			// For each file, we get the name and the rights
+			String[] list = tmpFiles.get(i).split(" ");
+			String rights = list[0];
+			int j = 8;
+			for (int k = 0; k < j; k++) {
+				// We use that to remove the empty space (ie 1 space after 1
+				// other)
+				if (list[k].equals("")) {
+					j++;
+				}
 			}
-		}else if(tmpFiles.size() > 1
-				&& tmpFiles.get(tmpFiles.size() - 1).equals("1")) {
-			for (int i = 1; i < tmpFiles.size() - 1; i++) {
-				if(tmpFiles.get(i).length()>57)
-					res.add(new SshFile(tmpFiles.get(i), path, isWindows));
+			String name = list[j];
+			j++;
+			for (; j < list.length; j++) {
+				name += " "+list[j];
 			}
+			res.add(new SshFile(rights, name, path));
 		}
 		return SshFile.sort(res, path);
 	}
-	
+
 	public ArrayList<String> execute(String command) {
 		return execute(command, false);
 	}
@@ -113,31 +125,31 @@ public class SshClient {
 			channel.connect();
 			channel.setInputStream(null);
 			((ChannelExec) channel).setErrStream(System.err);
-//			InputStream inErr=channel.getErrStream();
+			// InputStream inErr=channel.getErrStream();
 			InputStream in = channel.getInputStream();
 
 			byte[] tmp = new byte[1024];
 			String tmpRes = "";
 			while (true) {
-//				while (inErr.available() > 0) {
-//					int i = inErr.read(tmp, 0, 1024);
-//					if (i < 0) {
-//						break;
-//					}
-//					System.out.println("getting stringerror: "
-//							+ new String(tmp, 0, i));
-//				}
-				if(careForOutput)
-				while (in.available() > 0) {
-					int i = in.read(tmp, 0, 1024);
-					if (i < 0) {
-						break;
+				// while (inErr.available() > 0) {
+				// int i = inErr.read(tmp, 0, 1024);
+				// if (i < 0) {
+				// break;
+				// }
+				// System.out.println("getting stringerror: "
+				// + new String(tmp, 0, i));
+				// }
+				if (careForOutput)
+					while (in.available() > 0) {
+						int i = in.read(tmp, 0, 1024);
+						if (i < 0) {
+							break;
+						}
+						System.out.println("getting string: "
+								+ new String(tmp, 0, i));
+						// res.add(new String(tmp, 0, i));
+						tmpRes += new String(tmp, 0, i);
 					}
-					System.out.println("getting string: "
-							+ new String(tmp, 0, i));
-					// res.add(new String(tmp, 0, i));
-					tmpRes += new String(tmp, 0, i);
-				}
 				if (channel.isClosed()) {
 					System.out.println("exit-status: "
 							+ channel.getExitStatus());

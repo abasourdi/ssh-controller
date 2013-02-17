@@ -74,7 +74,9 @@ public class ControllerActivity extends SshControllerActivity implements OnClick
 							Log.i(this.getClass().toString(), "executing command: "+button.onPress.command);
 							SshClient currentClient=getCurrentClient();
 							if(currentClient!=null){
-								currentClient.execute(button.onPress.command);
+								//To escape space... Dunno any other solution yet...
+								currentClient.execute(button.onPress.command.replace(" ", "\\ "));
+//								currentClient.execute(button.onPress.command);
 							}
 						}
 					}
