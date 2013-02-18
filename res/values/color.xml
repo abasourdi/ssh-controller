@@ -7,14 +7,15 @@
 <color name="black">#000000</color>
 
 
-<color name="background">#303030</color>
-
+<!-- <color name="background">#303030</color>
+<color name="edit_background">#556b2f</color>
+<color name="button_text_color">#dfe3ee</color>
+<color name="text_color">#dfe3ee</color>
+ -->
 <color name="button_top_blue">#3b5998</color>
 <color name="button_bottom_blue">#8b9dc3</color>
 <color name="button_border">#f7f7f7</color>
-<color name="button_text_color">#dfe3ee</color>
 
-<color name="edit_background">#556b2f</color>
 
 <color name="top_red">#98593b</color>
 <color name="bottom_red">#c39d8b</color>
@@ -28,5 +29,13 @@
 <color name="top_blue">#3b5998</color>
 <color name="bottom_blue">#8b9dc3</color>
 
-<color name="text_color">#dfe3ee</color>
+
+
+<color name="background">#956a59</color>
+<color name="edit_background">#768d79</color>
+<color name="copper">#7e4635</color>
+<color name="rusty_copper">#956a59</color>
+<color name="button_text_color">#2d1f1c</color>
+<color name="text_color">#2d1f1c</color>
+
 </resources>

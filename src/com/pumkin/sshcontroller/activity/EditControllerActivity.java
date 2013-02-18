@@ -1,6 +1,9 @@
 package com.pumkin.sshcontroller.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.shapes.Shape;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -100,7 +103,9 @@ public class EditControllerActivity extends SshControllerActivity implements
 		String buttonType = v.getTag().toString();
 		Log.i(this.getClass().getName(), "current action: " + buttonType);
 		
-		Button tmpButton=new Button(buttonType);
+		
+		int[] colors = { Color.BLACK, Color.RED };
+		Button tmpButton=new Button(colors, colors, GradientDrawable.OVAL);
 		
 		//
 		

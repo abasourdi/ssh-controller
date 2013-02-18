@@ -47,6 +47,26 @@
     
     
     <!-- Edit button -->
+    <string name="edit_button_action">Edit action</string>
+    <string name="edit_button_design">Edit design</string>
+    <string name="delete_button">Delete</string>
+    
+    <!-- Edit button design -->
+    <string name="current_button">current button:</string>
+    <string name="colors_normal">start colors:</string>
+    <string name="colors_pressed">pressed colors:</string>
+    <string name="add_new_color">add new color</string>
+    <string name="shape">shape:</string>
+    <string name="rectangle">rectangle</string>
+    <string name="oval">oval</string>
+    <string-array name="shape_arrays">
+        <item>@string/rectangle</item>
+        <item>@string/oval</item>
+    </string-array>
+    <string name="widthWithDp">width: %1$ddp</string>
+    <string name="heightWithDp">height: %1$ddp</string>
+    
+    <!-- Edit button action -->
     <string name="label">Label:</string>
     <string name="action">Action</string>
     <string name="repeataction">Repeat Action Every </string>

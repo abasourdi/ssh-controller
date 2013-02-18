@@ -23,4 +23,13 @@ public class SshControllerUtils {
 		int dps = (int) (pxs / scale + 0.5f);
 		return dps;
 	}
+	
+	public static int getPositionInt(int value, int[] values){
+		for(int i=0;i<values.length;i++){
+			if(value==values[i]){
+				return i;
+			}
+		}
+		return -1;
+	}
 }

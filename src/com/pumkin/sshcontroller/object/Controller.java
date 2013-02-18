@@ -90,6 +90,16 @@ public class Controller implements Serializable {
 		}
 		return null;
 	}
+	
+	public boolean deleteButtonByUuid(String uuid){
+		for(int i=0;i<buttons.size();i++){
+			if(uuid.equals(buttons.get(i).uuid)){
+				buttons.remove(i);
+				return true;
+			}
+		}
+		return false;
+	}
 
 	public static void addController(Controller newController) {
 		if (controllers == null) {

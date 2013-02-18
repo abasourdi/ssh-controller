@@ -12,14 +12,15 @@ import android.widget.TextView;
 import com.pumkin.sshcontroller.object.Button;
 import com.pumkin.sshcontroller.object.Controller;
 
-public class EditButtonActivity extends SshControllerActivity {
+public class ChooseColorActivity extends SshControllerActivity {
 
 	Button button;
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_edit_button);
+		setContentView(R.layout.activity_edit_button_design);
 		button=controller.getButtonByUuid(getIntent().getExtras().get("uuid").toString());
 	}
 
@@ -31,27 +32,38 @@ public class EditButtonActivity extends SshControllerActivity {
 		finish();
 	}
 	
-	public void editButtonAction(View v) {
-		Log.d(this.getClass().toString(), "editButtonAction for uuid "+button.uuid);
+	@Override
+	protected void onResume() {
+		super.onResume();
+		Log.i(this.getClass().getName(), "calling onResume");
+		refresh();
+	}
+	
+	public void save(){}
+	
+	@Override
+    protected void onPause() {
+        // TODO Auto-generated method stub
+        super.onPause();
+        //save everything
+        save();
+    }
+
+	
+	//TODO
+	public void refresh(){
+		
+		
+	}
+	
+
+	public void changeColorStart(View v) {
+		Log.d(this.getClass().toString(), "editAction for uuid "+button.uuid);
+//		refresh();
 		Intent startNewActivityOpen = new Intent(
-				EditButtonActivity.this, EditButtonActionActivity.class);
+				ChooseColorActivity.this, ChooseScriptActivity.class);
 		startNewActivityOpen.putExtra("uuid", button.uuid);
 		startActivityForResult(startNewActivityOpen, 0);
 		overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
-	}
-	
-	public void editButtonDesign(View v) {
-		Log.d(this.getClass().toString(), "editButtonDesign for uuid "+button.uuid);
-		Intent startNewActivityOpen = new Intent(
-				EditButtonActivity.this, EditButtonDesignActivity.class);
-		startNewActivityOpen.putExtra("uuid", button.uuid);
-		startActivityForResult(startNewActivityOpen, 0);
-		overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
-	}
-	
-	public void deleteButton(View v) {
-		Log.d(this.getClass().toString(), "deleteButton for uuid "+button.uuid);
-		controller.deleteButtonByUuid(button.uuid);
-		onBackPressed();
 	}
 }
