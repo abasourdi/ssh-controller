@@ -65,6 +65,9 @@
     </string-array>
     <string name="widthWithDp">width: %1$ddp</string>
     <string name="heightWithDp">height: %1$ddp</string>
+    <string name="border">border: %1$ddp</string>
+    <string name="borderColor">border color</string>
+    <string name="stroke">stroke: %1$ddp</string>
     
     <!-- Edit button action -->
     <string name="label">Label:</string>

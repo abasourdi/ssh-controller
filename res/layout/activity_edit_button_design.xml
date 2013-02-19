@@ -102,19 +102,52 @@
                     android:layout_height="wrap_content" />
             </RelativeLayout>
             
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="100dp"
+                android:orientation="horizontal" >
+                <TextView
+                    android:id="@+id/textViewBorder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:gravity="center_vertical"
+                    android:minWidth="40dp"
+                    android:text="border: 10dp"/>
+				<SeekBar
+                    android:id="@+id/seekBarBorder"
+                    android:layout_toRightOf="@+id/textViewBorder"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            
+             <RelativeLayout
+                 android:id="@+id/relativeLayoutStroke"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="100dp"
+                android:orientation="horizontal" >
+                <TextView
+                    android:id="@+id/textViewStroke"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:gravity="center_vertical"
+                    android:minWidth="40dp"
+                    android:text="border: 10dp"/>
+				<SeekBar
+                    android:id="@+id/seekBarStroke"
+                    android:layout_toRightOf="@+id/textViewStroke"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            
             <LinearLayout
                 android:id="@+id/colorsList"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical" >
-
-                <!--
-                <ListView
-                    android:id="@+id/colorsList"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content" >
-                </ListView>
-                -->
             </LinearLayout>
 
             <LinearLayout
@@ -123,14 +156,6 @@
                 android:layout_height="wrap_content"
                 android:minHeight="100dp"
                 android:orientation="vertical" >
-
-                <!--
-                <ListView
-                    android:id="@+id/colorsListPushed"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content" >
-                </ListView>
-                -->
             </LinearLayout>
             
         </LinearLayout>

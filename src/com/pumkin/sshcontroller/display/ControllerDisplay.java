@@ -1,19 +1,19 @@
 package com.pumkin.sshcontroller.display;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.GradientDrawable.Orientation;
+import android.graphics.drawable.StateListDrawable;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 
-import com.pumkin.sshcontroller.activity.R;
 import com.pumkin.sshcontroller.object.Button;
 import com.pumkin.sshcontroller.object.Controller;
 import com.pumkin.sshcontroller.utils.SshControllerUtils;
@@ -90,7 +90,7 @@ public class ControllerDisplay {
 			TextView displayedButton = new TextView(context);
 			displayedButton.setText(button.displayedName);
 
-			displayedButton.setBackgroundDrawable(getDrawableFromType(context,
+			displayedButton.setBackgroundDrawable(getStateListDrawableFromType(context,
 					button));
 			displayedButton.setMinimumHeight(SshControllerUtils.convertDpToPx(
 					context, button.height));
@@ -98,13 +98,8 @@ public class ControllerDisplay {
 					context, button.width));
 			// displayedButton.set
 
-			RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
-					RelativeLayout.LayoutParams.WRAP_CONTENT,
-					RelativeLayout.LayoutParams.WRAP_CONTENT);
-
-			layoutParams.setMargins(SshControllerUtils.convertDpToPx(context,
-					button.marginLeft), SshControllerUtils.convertDpToPx(
-					context, button.marginTop), 0, 0);
+			RelativeLayout.LayoutParams layoutParams = getLayoutParams(context,
+					button);
 
 			displayedButton.setTag(button.uuid);
 			displayedButton.setOnClickListener(onClickListener);
@@ -119,11 +114,54 @@ public class ControllerDisplay {
 		}
 	}
 
-	public static Drawable getDrawableFromType(Context context, Button button) {
-		
-		GradientDrawable res = new GradientDrawable(Orientation.TOP_BOTTOM,
-				button.colors);
-		res.setShape(button.shape);
+	public static LayoutParams getLayoutParams(Context context, Button button) {
+		LayoutParams res = new RelativeLayout.LayoutParams(
+				RelativeLayout.LayoutParams.WRAP_CONTENT,
+				RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+		res.setMargins(
+				SshControllerUtils.convertDpToPx(context, button.marginLeft),
+				SshControllerUtils.convertDpToPx(context, button.marginTop), 0,
+				0);
 		return res;
 	}
+
+	public static Drawable getDrawableFromType(Context context, Button button,
+			boolean pressed) {
+
+		
+		GradientDrawable res;
+		if(pressed){
+		res = new GradientDrawable(Orientation.TOP_BOTTOM,
+				button.colors);
+		}else{
+			res = new GradientDrawable(Orientation.TOP_BOTTOM,
+					button.pressedColors);
+		}
+		res.setShape(button.shape);
+		if (button.shape != GradientDrawable.OVAL && button.stroke != 0) {
+			float f = Float.parseFloat(""
+					+ SshControllerUtils.convertDpToPx(context, button.stroke));
+			res.setCornerRadius(f);
+		}
+		if (button.border != 0) {
+			res.setStroke(
+					SshControllerUtils.convertDpToPx(context, button.border),
+					button.colorBorder);
+		}
+		return res;
+	}
+
+	public static StateListDrawable getStateListDrawableFromType(
+			Context context, Button button) {
+		StateListDrawable res = new StateListDrawable();
+		 res.addState(new int[] {android.R.attr.state_pressed},
+		 getDrawableFromType(context, button, true));
+
+		 //Normal state
+		 res.addState(new int[] {},
+				 getDrawableFromType(context, button, false));
+		return res;
+	}
+
 }

@@ -9,10 +9,15 @@ public class Button implements Serializable {
 		this.type = type;
 		uuid = UUID.randomUUID().toString();
 	}
-	public Button(int[] colors, int[] pressedColor, int shape) {
-		this.colors=colors;
-		this.pressedColors=pressedColor;
-		this.shape=shape;
+
+	public Button(int[] colors, int[] pressedColor, int shape, int colorBorder,
+			int border, int stroke) {
+		this.colors = colors;
+		this.pressedColors = pressedColor;
+		this.shape = shape;
+		this.colorBorder = colorBorder;
+		this.border = border;
+		this.stroke = stroke;
 		uuid = UUID.randomUUID().toString();
 	}
 
@@ -21,8 +26,8 @@ public class Button implements Serializable {
 	public String type;
 
 	public Action onPress = new Action();
-	// If 0, nothing, but if it's positive, we repeat this action until the
-	// button is pressed with this interval
+	// If 0, nothing, but if it's positive, we repeat this action with this
+	// interval when the button is pressed
 	public int repeatEvery = 0;
 
 	public int currentState = 0;
@@ -36,6 +41,11 @@ public class Button implements Serializable {
 	public int[] pressedColors;
 	// Can be every shape according to android
 	public int shape;
+
+	public int colorBorder;
+	public int border;
+	// Only for rectangle button
+	public int stroke;
 
 	public int marginLeft = 0;
 	public int marginTop = 0;
