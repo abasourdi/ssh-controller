@@ -1,5 +1,6 @@
 package com.pumkin.sshcontroller.activity;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
@@ -51,7 +52,7 @@ public class EditButtonDesignActivity extends SshControllerActivity implements
 	SeekBar seekBarStroke;
 	RelativeLayout relativeLayoutStroke;
 	Spinner shapeSpinner;
-	
+
 	android.widget.Button templateButton;
 
 	@Override
@@ -65,7 +66,7 @@ public class EditButtonDesignActivity extends SshControllerActivity implements
 		colorsListPushed = (LinearLayout) findViewById(R.id.colorsListPushed);
 
 		templateButton = (android.widget.Button) findViewById(R.id.template_button);
-		
+
 		textViewWidth = (TextView) findViewById(R.id.textViewWidth);
 		seekBarWidth = (SeekBar) findViewById(R.id.seekBarWidth);
 		seekBarWidth.setMax(Values.possibleWidths.length);
@@ -79,13 +80,12 @@ public class EditButtonDesignActivity extends SshControllerActivity implements
 		seekBarStroke = (SeekBar) findViewById(R.id.seekBarStroke);
 		seekBarStroke.setMax(Values.possibleStroke.length);
 		seekBarStroke.setOnSeekBarChangeListener(this);
-		relativeLayoutStroke=(RelativeLayout) findViewById(R.id.relativeLayoutStroke);
+		relativeLayoutStroke = (RelativeLayout) findViewById(R.id.relativeLayoutStroke);
 
-		textViewBorder= (TextView) findViewById(R.id.textViewBorder);
+		textViewBorder = (TextView) findViewById(R.id.textViewBorder);
 		seekBarBorder = (SeekBar) findViewById(R.id.seekBarBorder);
 		seekBarBorder.setMax(Values.possibleBorder.length);
 		seekBarBorder.setOnSeekBarChangeListener(this);
-
 
 		shapeSpinner = (Spinner) findViewById(R.id.shapeSpinner);
 		shapeSpinner.setOnItemSelectedListener(this);
@@ -103,9 +103,9 @@ public class EditButtonDesignActivity extends SshControllerActivity implements
 	protected void onResume() {
 		super.onResume();
 		Log.i(this.getClass().getName(), "calling onResume");
-		
-		switch(button.shape){
-		//Maybe do something better at some point?
+
+		switch (button.shape) {
+		// Maybe do something better at some point?
 		case GradientDrawable.OVAL:
 			shapeSpinner.setSelection(1);
 			break;
@@ -113,7 +113,7 @@ public class EditButtonDesignActivity extends SshControllerActivity implements
 			shapeSpinner.setSelection(0);
 			break;
 		}
-		
+
 		refresh();
 	}
 
@@ -153,38 +153,40 @@ public class EditButtonDesignActivity extends SshControllerActivity implements
 		seekBarHeight.setProgress(SshControllerUtils.getPositionInt(
 				button.height, Values.possibleHeights));
 
-
 		textViewStroke.setText(getString(R.string.stroke, button.stroke));
 		seekBarStroke.setProgress(SshControllerUtils.getPositionInt(
 				button.stroke, Values.possibleStroke));
 		textViewBorder.setText(getString(R.string.border, button.border));
 		seekBarBorder.setProgress(SshControllerUtils.getPositionInt(
 				button.border, Values.possibleBorder));
-		
-		if(button.shape==GradientDrawable.OVAL){
+
+		if (button.shape == GradientDrawable.OVAL) {
 			relativeLayoutStroke.setVisibility(View.GONE);
-		}else{
+		} else {
 			relativeLayoutStroke.setVisibility(View.VISIBLE);
 		}
-		//finally, we regenerate the button to have a nice layout
-		Drawable drawable=ControllerDisplay.getStateListDrawableFromType(this, button);
+		// finally, we regenerate the button to have a nice layout
+		Drawable drawable = ControllerDisplay.getStateListDrawableFromType(
+				this, button);
 		templateButton.setBackgroundDrawable(drawable);
 
-		int height=SshControllerUtils.convertDpToPx(
-				this, button.height);
-		int width=SshControllerUtils.convertDpToPx(
-				this, button.width);
+		int height = SshControllerUtils.convertDpToPx(this, button.height);
+		int width = SshControllerUtils.convertDpToPx(this, button.width);
 		templateButton.setMinimumHeight(height);
 		templateButton.setMaxHeight(height);
 		templateButton.setMinimumWidth(width);
 		templateButton.setMaxWidth(width);
 	}
 
-	public void changeTemplate(View v) {
-		// TODO
-		Log.d(this.getClass().toString(), "changeTemplate for uuid "
+	public void chooseTemplate(View v) {
+		Log.d(this.getClass().toString(), "chooseTemplate for uuid "
 				+ button.uuid);
-		refresh();
+
+		Intent startNewActivityOpen = new Intent(EditButtonDesignActivity.this,
+				ChooseTemplateActivity.class);
+		startNewActivityOpen.putExtra("uuid", button.uuid);
+		startActivityForResult(startNewActivityOpen, 0);
+		overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 	}
 
 	// Is used for the width/height
@@ -196,7 +198,7 @@ public class EditButtonDesignActivity extends SshControllerActivity implements
 		} else if (seekBar == seekBarWidth) {
 			button.width = Values.possibleWidths[progress];
 		} else if (seekBar == seekBarStroke) {
-			button.stroke= Values.possibleStroke[progress];
+			button.stroke = Values.possibleStroke[progress];
 		} else if (seekBar == seekBarBorder) {
 			button.border = Values.possibleBorder[progress];
 		}
@@ -217,10 +219,10 @@ public class EditButtonDesignActivity extends SshControllerActivity implements
 			long arg3) {
 		if (textView.getClass() == android.widget.TextView.class) {
 			String text = ((TextView) textView).getText().toString();
-			if(text.equals(getText(R.string.oval))){
-				button.shape=GradientDrawable.OVAL;
-			}else if(text.equals(getText(R.string.rectangle))){
-				button.shape=GradientDrawable.RECTANGLE;
+			if (text.equals(getText(R.string.oval))) {
+				button.shape = GradientDrawable.OVAL;
+			} else if (text.equals(getText(R.string.rectangle))) {
+				button.shape = GradientDrawable.RECTANGLE;
 			}
 		}
 		refresh();

@@ -77,6 +77,11 @@
     <string name="stateaction">State action</string>
     <string name="askforconfirmation">confirmation</string>
     
+    <!-- Choose Template -->
+    <string name="selecttemplate">Select template</string>
+    <string name="selectcoloronly">Select color only</string>
+    
+    
     <!-- Use Action -->
     <string name="titleuseaction">Using action</string>
     <string name="labeluseaction">are you sure you want to execute this action</string>

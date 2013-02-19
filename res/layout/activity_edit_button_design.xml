@@ -5,31 +5,29 @@
     android:background="@color/edit_background"
     tools:context=".MainActivity" >
 
-    
+    <LinearLayout
+        android:id="@+id/changeTemplate"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="100dp"
+        android:onClick="changeTemplate"
+        android:orientation="horizontal" >
 
-            <LinearLayout
-                android:id="@+id/changeTemplate"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="100dp"
-                android:onClick="changeTemplate"
-                android:orientation="horizontal" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="center_vertical"
+            android:minWidth="40dp"
+            android:text="@string/current_button" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:gravity="center_vertical"
-                    android:minWidth="40dp"
-                    android:text="@string/current_button" />
+        <Button
+            android:id="@+id/template_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical" />
+    </LinearLayout>
 
-                <Button
-                    android:id="@+id/template_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="center_vertical" />
-            </LinearLayout>
-            
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -40,7 +38,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/add_button"
+                android:minHeight="40dp"
+                android:onClick="chooseTemplate"
+                android:text="@string/shape" />
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -66,20 +71,21 @@
                 android:layout_height="wrap_content"
                 android:minHeight="100dp"
                 android:orientation="horizontal" >
-                
+
                 <TextView
                     android:id="@+id/textViewWidth"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
                     android:minWidth="40dp"
-                    android:text="width: 70dp"/>
-				<SeekBar
+                    android:text="width: 70dp" />
+
+                <SeekBar
                     android:id="@+id/seekBarWidth"
-                    android:layout_toRightOf="@+id/textViewWidth"
-                    android:layout_alignParentRight="true"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@+id/textViewWidth" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -87,67 +93,74 @@
                 android:layout_height="wrap_content"
                 android:minHeight="100dp"
                 android:orientation="horizontal" >
+
                 <TextView
                     android:id="@+id/textViewHeight"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
                     android:minWidth="40dp"
-                    android:text="height: 70dp"/>
-				<SeekBar
+                    android:text="height: 70dp" />
+
+                <SeekBar
                     android:id="@+id/seekBarHeight"
-                    android:layout_toRightOf="@+id/textViewHeight"
-                    android:layout_alignParentRight="true"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@+id/textViewHeight" />
             </RelativeLayout>
-            
+
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="100dp"
                 android:orientation="horizontal" >
+
                 <TextView
                     android:id="@+id/textViewBorder"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
                     android:minWidth="40dp"
-                    android:text="border: 10dp"/>
-				<SeekBar
+                    android:text="border: 10dp" />
+
+                <SeekBar
                     android:id="@+id/seekBarBorder"
-                    android:layout_toRightOf="@+id/textViewBorder"
-                    android:layout_alignParentRight="true"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@+id/textViewBorder" />
             </RelativeLayout>
-            
-             <RelativeLayout
-                 android:id="@+id/relativeLayoutStroke"
+
+            <RelativeLayout
+                android:id="@+id/relativeLayoutStroke"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="100dp"
                 android:orientation="horizontal" >
+
                 <TextView
                     android:id="@+id/textViewStroke"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
                     android:minWidth="40dp"
-                    android:text="border: 10dp"/>
-				<SeekBar
+                    android:text="border: 10dp" />
+
+                <SeekBar
                     android:id="@+id/seekBarStroke"
-                    android:layout_toRightOf="@+id/textViewStroke"
-                    android:layout_alignParentRight="true"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@+id/textViewStroke" />
             </RelativeLayout>
-            
+
             <LinearLayout
                 android:id="@+id/colorsList"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:orientation="vertical"
+                android:visibility="gone" >
             </LinearLayout>
 
             <LinearLayout
@@ -155,9 +168,9 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="100dp"
-                android:orientation="vertical" >
+                android:orientation="vertical"
+                android:visibility="gone" >
             </LinearLayout>
-            
         </LinearLayout>
     </ScrollView>
 

@@ -58,6 +58,11 @@
             android:name="com.pumkin.sshcontroller.activity.ChooseColorActivity"
             android:label="@string/app_name" >
         </activity>
+        <activity
+            android:name="com.pumkin.sshcontroller.activity.ChooseTemplateActivity"
+            android:label="@string/app_name" >
+        </activity>
+        
     </application>
 
 </manifest>

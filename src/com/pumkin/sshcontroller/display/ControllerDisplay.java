@@ -90,13 +90,13 @@ public class ControllerDisplay {
 			TextView displayedButton = new TextView(context);
 			displayedButton.setText(button.displayedName);
 
+			
 			displayedButton.setBackgroundDrawable(getStateListDrawableFromType(context,
 					button));
 			displayedButton.setMinimumHeight(SshControllerUtils.convertDpToPx(
 					context, button.height));
 			displayedButton.setMinimumWidth(SshControllerUtils.convertDpToPx(
 					context, button.width));
-			// displayedButton.set
 
 			RelativeLayout.LayoutParams layoutParams = getLayoutParams(context,
 					button);

@@ -62,9 +62,11 @@ public class MainActivity extends SshControllerActivity implements
 		overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 	}
 
-	//If state of the activity is online => launch it, otherwise, 
+	 
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View v, int position, long id) {
+		//If state of the activity is online => launch it, otherwise,
+		//TOCHANGE SO FOR TEST PURPOSE
 		if(true){
 		//if(controller.state==Controller._CONNECTED){
 			Intent startNewActivityOpen = new Intent(

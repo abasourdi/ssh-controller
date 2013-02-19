@@ -14,6 +14,7 @@ import com.pumkin.sshcontroller.object.Controller;
 
 public class ChooseColorActivity extends SshControllerActivity {
 
+	//Will not be used maybe?
 	Button button;
 	
 	
