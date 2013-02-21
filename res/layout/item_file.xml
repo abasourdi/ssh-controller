@@ -5,9 +5,9 @@
     android:orientation="horizontal" 
     android:background="@color/edit_background">
 
-    <TextView
+    <ImageView
         android:id="@+id/filePicture"
-        android:background="@drawable/controller_state_unknown"
+        android:background="@drawable/folder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:minWidth="40dp"

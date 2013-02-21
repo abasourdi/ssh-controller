@@ -7,16 +7,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.pumkin.sshcontroller.activity.R;
 import com.pumkin.sshcontroller.activity.SshControllerActivity;
-import com.pumkin.sshcontroller.object.Controller;
 import com.pumkin.sshcontroller.object.SshFile;
 
 public class ChooseFileAdapter extends BaseAdapter {
 
 	LayoutInflater inflater;
+	Context context;
 
 	public ChooseFileAdapter(Context context, ArrayList<SshFile> sshFiles) {
 		inflater = LayoutInflater.from(context);
@@ -47,7 +48,7 @@ public class ChooseFileAdapter extends BaseAdapter {
 			holder = new ViewHolder();
 			convertView = inflater.inflate(R.layout.item_file, null);
 			holder.name = (TextView) convertView.findViewById(R.id.fileName);
-			holder.picture = (TextView) convertView
+			holder.picture = (ImageView) convertView
 					.findViewById(R.id.filePicture);
 			convertView.setTag(holder);
 		} else {
@@ -55,15 +56,17 @@ public class ChooseFileAdapter extends BaseAdapter {
 		}
 		holder.name.setText(sshFiles.get(position).name);
 		if(getItem(position).isDirectory){
-			holder.picture.setBackgroundDrawable(SshControllerActivity.instance.getResources().getDrawable(R.drawable.controller_state_online));
-		}else{
-			holder.picture.setBackgroundDrawable(SshControllerActivity.instance.getResources().getDrawable(R.drawable.controller_state_unknown));
-		}		
+			holder.picture.setImageResource(R.drawable.folder);
+		}else if(getItem(position).isExecutable){
+			holder.picture.setImageResource(R.drawable.executable_file);
+		}else if(getItem(position).isReadable){
+			holder.picture.setImageResource(R.drawable.executable_file);
+		}
 		return convertView;
 	}
 
 	private class ViewHolder {
-		TextView picture;
+		ImageView picture;
 		TextView name;
 	}
 }

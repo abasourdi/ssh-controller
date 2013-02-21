@@ -61,6 +61,7 @@ public class ControllerActivity extends SshControllerActivity implements OnClick
 		overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 	}
 
+	//TODO REPLACE WITH ONTOUCH TO SEND THE POSITION + REPEAT ACTION
 	@Override
 	public void onClick(final View view) {
 		final Button button=controller.getButtonByUuid(view.getTag().toString());

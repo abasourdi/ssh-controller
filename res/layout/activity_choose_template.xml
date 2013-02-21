@@ -5,11 +5,13 @@
     tools:context=".MainActivity" 
     android:background="@color/edit_background">
 
-    <ListView 
+    <GridView 
         android:id="@+id/templateList"
+        android:verticalSpacing="20dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:numColumns="2"
         android:layout_alignParentTop="true">
-    </ListView>
+    </GridView>
 
 </RelativeLayout>

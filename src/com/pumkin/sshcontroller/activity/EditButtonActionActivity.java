@@ -78,7 +78,8 @@ public class EditButtonActionActivity extends SshControllerActivity {
 
 	
 	public void refresh(){
-		colorAdapter= new ColorAdapter(this, button.colors);
+		//TODO CLEAN THAT
+//		colorAdapter= new ColorAdapter(this, button.colors);
 	}
 	
 

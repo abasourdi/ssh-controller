@@ -34,6 +34,7 @@
     <!-- Controller -->
     <string name="enable_edit_mode">Enable edit mode</string>
     <string name="quit_edit_mode">Quit edit mode</string>
+    <string name="add_button">Add a new button</string>
     <string name="add_circular_button">Add new circular button</string>
     <string name="add_rectangular_button">Add new rectangular button</string>
     

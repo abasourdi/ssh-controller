@@ -3,7 +3,6 @@ package com.pumkin.sshcontroller.activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.shapes.Shape;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -20,6 +19,7 @@ import android.widget.RelativeLayout;
 import com.pumkin.sshcontroller.display.ControllerDisplay;
 import com.pumkin.sshcontroller.object.Button;
 import com.pumkin.sshcontroller.object.Controller;
+import com.pumkin.sshcontroller.object.Design;
 import com.pumkin.sshcontroller.utils.SshControllerUtils;
 
 public class EditControllerActivity extends SshControllerActivity implements
@@ -29,17 +29,19 @@ public class EditControllerActivity extends SshControllerActivity implements
 	RelativeLayout relativeLayout;
 
 	public boolean isMoving = false;
-	int initialPosX=0;
-	int initialPosY=0;
-	String uuid="";
+	int initialPosX = 0;
+	int initialPosY = 0;
+	String uuid = "";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_controller);
 		relativeLayout = (RelativeLayout) findViewById(R.id.controller_layout);
-		Log.i(this.getClass().getName(), "nb buttons: "+controller.buttons.size());
+		Log.i(this.getClass().getName(),
+				"nb buttons: " + controller.buttons.size());
 	}
+
 	@Override
 	protected void onResume() {
 		super.onResume();
@@ -66,7 +68,15 @@ public class EditControllerActivity extends SshControllerActivity implements
 		}
 	}
 
-	public void quitEditMode(MenuItem menuItem) {
+	public void addNewButton(MenuItem menuItem) {
+		//Launch the activity choose design
+		Intent startNewActivityOpen = new Intent(EditControllerActivity.this,
+				ChooseTemplateActivity.class);
+		startActivityForResult(startNewActivityOpen, 0);
+		overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+	}
+
+		public void quitEditMode(MenuItem menuItem) {
 		hideCurrentVisibleView();
 		onBackPressed();
 	}
@@ -88,7 +98,7 @@ public class EditControllerActivity extends SshControllerActivity implements
 		v.getParent().bringChildToFront(v);
 		currentVisibleView = v;
 	}
-	
+
 	public void showMenuRectangularButtons(MenuItem menuItem) {
 		hideCurrentVisibleView();
 		View v = findViewById(R.id.menu_rectangular_buttons);
@@ -102,23 +112,20 @@ public class EditControllerActivity extends SshControllerActivity implements
 		hideCurrentVisibleView();
 		String buttonType = v.getTag().toString();
 		Log.i(this.getClass().getName(), "current action: " + buttonType);
-		
-		
+
 		int[] colors = { Color.BLACK, Color.RED };
 		int[] colorsInversed = { Color.RED, Color.BLACK };
-		//TODO CHANGE THAT
-		Button tmpButton=new Button(colors, colorsInversed, GradientDrawable.OVAL, Color.GREEN, 2, 15);
-		
-		try{
-			LinearLayout lL=(LinearLayout) v;
-			v=lL.getChildAt(0);
-		}catch(Exception e){
-			
+		// TODO CHANGE THAT
+		Button tmpButton = new Button(new Design(colors, colorsInversed,
+				GradientDrawable.OVAL, Color.GREEN, 2, 15, 90, 90));
+
+		try {
+			LinearLayout lL = (LinearLayout) v;
+			v = lL.getChildAt(0);
+		} catch (Exception e) {
+
 		}
-		tmpButton.height=SshControllerUtils.convertPxToDp(this, v.getHeight());
-		tmpButton.width=SshControllerUtils.convertPxToDp(this, v.getWidth());
-		
-		
+
 		controller.addButton(tmpButton);
 		Controller.saveControllers();
 		ControllerDisplay.resetLayout(this, relativeLayout, controller, this,
@@ -129,7 +136,7 @@ public class EditControllerActivity extends SshControllerActivity implements
 	public boolean onLongClick(View v) {
 		Log.i(this.getClass().getName(), "long click on view: "
 				+ v.getTag().toString());
-		isMoving=true;
+		isMoving = true;
 		return true;
 	}
 
@@ -137,12 +144,12 @@ public class EditControllerActivity extends SshControllerActivity implements
 	public void onClick(View view) {
 		Log.i(this.getClass().getName(), "click on view: "
 				+ view.getTag().toString());
-		isMoving=false;
-		Intent startNewActivityOpen = new Intent(
-				EditControllerActivity.this, EditButtonActivity.class);
-		
-		//We get the action
-		uuid=view.getTag().toString();
+		isMoving = false;
+		Intent startNewActivityOpen = new Intent(EditControllerActivity.this,
+				EditButtonActivity.class);
+
+		// We get the action
+		uuid = view.getTag().toString();
 		startNewActivityOpen.putExtra("uuid", uuid);
 		startActivityForResult(startNewActivityOpen, 0);
 		overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
@@ -156,24 +163,29 @@ public class EditControllerActivity extends SshControllerActivity implements
 			Controller.saveControllers();
 			break;
 		case MotionEvent.ACTION_DOWN:
-			uuid=view.getTag().toString();
-			Button b=controller.getButtonByUuid(uuid);
-			initialPosX=(int) event.getX();
-			initialPosY=(int) event.getY();
-			Log.i(this.getClass().getName(), "initial pos: "+initialPosX+"/"+initialPosY);
+			uuid = view.getTag().toString();
+			Button b = controller.getButtonByUuid(uuid);
+			initialPosX = (int) event.getX();
+			initialPosY = (int) event.getY();
+			Log.i(this.getClass().getName(), "initial pos: " + initialPosX
+					+ "/" + initialPosY);
 			break;
 		case MotionEvent.ACTION_MOVE:
 			if (isMoving) {
 				Log.d(this.getClass().getName(), "touchevent: " + event.getX()
 						+ "/" + event.getY() + " tag: " + uuid);
-				Log.d(this.getClass().getName(), "touchevent: " + event.getAction());
-				int x=(int) (view.getLeft()+event.getX())+initialPosX;;
-				int y=(int) (view.getTop()+event.getY())+initialPosY;;
-				ControllerDisplay.moveButton(this, relativeLayout, controller,  uuid, x-initialPosX, y-initialPosY);
+				Log.d(this.getClass().getName(),
+						"touchevent: " + event.getAction());
+				int x = (int) (view.getLeft() + event.getX()) + initialPosX;
+				;
+				int y = (int) (view.getTop() + event.getY()) + initialPosY;
+				;
+				ControllerDisplay.moveButton(this, relativeLayout, controller,
+						uuid, x - initialPosX, y - initialPosY);
 			}
 			break;
 		}
-		//Don't consume the event to allow onclick and onlongclick to work
+		// Don't consume the event to allow onclick and onlongclick to work
 		return false;
 	}
 }

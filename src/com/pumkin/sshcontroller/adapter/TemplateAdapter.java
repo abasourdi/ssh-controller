@@ -2,28 +2,32 @@ package com.pumkin.sshcontroller.adapter;
 
 import java.util.ArrayList;
 
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
 
-import com.pumkin.sshcontroller.activity.ChooseTemplateActivity;
 import com.pumkin.sshcontroller.activity.R;
+import com.pumkin.sshcontroller.constants.Values;
 import com.pumkin.sshcontroller.display.ControllerDisplay;
 import com.pumkin.sshcontroller.object.Template;
+import com.pumkin.sshcontroller.utils.SshControllerUtils;
 
 public class TemplateAdapter extends BaseAdapter {
 
 	LayoutInflater inflater;
 	ArrayList<Template> templates;
-	ChooseTemplateActivity chooseTemplateActivity;
+	Context context;
 
-	public TemplateAdapter(ChooseTemplateActivity chooseTemplateActivity) {
-		inflater = LayoutInflater.from(chooseTemplateActivity);
+	public TemplateAdapter(Context context) {
+		inflater = LayoutInflater.from(context);
 		templates = Template.getTemplates();
-		this.chooseTemplateActivity = chooseTemplateActivity;
+		this.context = context;
 	}
 
 	@Override
@@ -47,27 +51,33 @@ public class TemplateAdapter extends BaseAdapter {
 		if (convertView == null) {
 			holder = new ViewHolder();
 			convertView = inflater.inflate(R.layout.item_template, null);
-			holder.template = (Button) convertView.findViewById(R.id.template);
+			holder.template = (TextView) convertView
+					.findViewById(R.id.template);
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
 
-		// Set the background of the template + the name
-		com.pumkin.sshcontroller.object.Button button = templates.get(position)
-				.generateButtonFromTemplate();
-		Drawable drawable = ControllerDisplay.getStateListDrawableFromType(
-				chooseTemplateActivity, button);
+		Drawable drawable = ControllerDisplay.getStateListDrawableFromDesign(
+				context, templates.get(position).design);
 		holder.template.setBackgroundDrawable(drawable);
+		// ControllerDisplay.getLayoutParams(context, Values.defaultWidth,
+		// Values.defaultWidth)
+		holder.template.setMinimumHeight(SshControllerUtils.convertDpToPx(
+				context, templates.get(position).design.height));
+		holder.template.setMinimumWidth(SshControllerUtils.convertDpToPx(
+				context, templates.get(position).design.width));
+		// An other one maybe
 
-		holder.template.setLayoutParams(ControllerDisplay.getLayoutParams(
-				chooseTemplateActivity, button));
-		
-		holder.template.setOnClickListener(chooseTemplateActivity);
+		LayoutParams layoutParams = ControllerDisplay.getLayoutParams(context,
+				0, 0);
+		layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT, 1);
+		holder.template.setLayoutParams(layoutParams);
+
 		return convertView;
 	}
 
 	private class ViewHolder {
-		Button template;
+		TextView template;
 	}
 }

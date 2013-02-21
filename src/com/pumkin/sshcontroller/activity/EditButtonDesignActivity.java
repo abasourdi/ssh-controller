@@ -78,7 +78,7 @@ public class EditButtonDesignActivity extends SshControllerActivity implements
 
 		textViewStroke = (TextView) findViewById(R.id.textViewStroke);
 		seekBarStroke = (SeekBar) findViewById(R.id.seekBarStroke);
-		seekBarStroke.setMax(Values.possibleStroke.length);
+		seekBarStroke.setMax(Values.possibleCornerRadius.length);
 		seekBarStroke.setOnSeekBarChangeListener(this);
 		relativeLayoutStroke = (RelativeLayout) findViewById(R.id.relativeLayoutStroke);
 
@@ -104,7 +104,7 @@ public class EditButtonDesignActivity extends SshControllerActivity implements
 		super.onResume();
 		Log.i(this.getClass().getName(), "calling onResume");
 
-		switch (button.shape) {
+		switch (button.design.shape) {
 		// Maybe do something better at some point?
 		case GradientDrawable.OVAL:
 			shapeSpinner.setSelection(1);
@@ -131,12 +131,12 @@ public class EditButtonDesignActivity extends SshControllerActivity implements
 	}
 
 	public void refresh() {
-		colorAdapter = new ColorAdapter(this, button.colors);
+		colorAdapter = new ColorAdapter(this, button.design.colors);
 		colorsList.removeAllViews();
 		for (int i = 0; i < colorAdapter.getCount(); i++) {
 			colorsList.addView(colorAdapter.getView(i, null, colorsList));
 		}
-		colorAdapterPushed = new ColorAdapter(this, button.pressedColors);
+		colorAdapterPushed = new ColorAdapter(this, button.design.pressedColors);
 		colorsListPushed.removeAllViews();
 		for (int i = 0; i < colorAdapterPushed.getCount(); i++) {
 			colorsListPushed.addView(colorAdapterPushed.getView(i, null,
@@ -145,33 +145,33 @@ public class EditButtonDesignActivity extends SshControllerActivity implements
 
 		// We also update the text
 
-		textViewWidth.setText(getString(R.string.widthWithDp, button.width));
-		textViewHeight.setText(getString(R.string.heightWithDp, button.height));
+		textViewWidth.setText(getString(R.string.widthWithDp, button.design.width));
+		textViewHeight.setText(getString(R.string.heightWithDp, button.design.height));
 
 		seekBarWidth.setProgress(SshControllerUtils.getPositionInt(
-				button.width, Values.possibleWidths));
+				button.design.width, Values.possibleWidths));
 		seekBarHeight.setProgress(SshControllerUtils.getPositionInt(
-				button.height, Values.possibleHeights));
+				button.design.height, Values.possibleHeights));
 
-		textViewStroke.setText(getString(R.string.stroke, button.stroke));
+		textViewStroke.setText(getString(R.string.stroke, button.design.cornerRadius));
 		seekBarStroke.setProgress(SshControllerUtils.getPositionInt(
-				button.stroke, Values.possibleStroke));
-		textViewBorder.setText(getString(R.string.border, button.border));
+				button.design.cornerRadius, Values.possibleCornerRadius));
+		textViewBorder.setText(getString(R.string.border, button.design.borderWidth));
 		seekBarBorder.setProgress(SshControllerUtils.getPositionInt(
-				button.border, Values.possibleBorder));
+				button.design.borderWidth, Values.possibleBorder));
 
-		if (button.shape == GradientDrawable.OVAL) {
+		if (button.design.shape == GradientDrawable.OVAL) {
 			relativeLayoutStroke.setVisibility(View.GONE);
 		} else {
 			relativeLayoutStroke.setVisibility(View.VISIBLE);
 		}
 		// finally, we regenerate the button to have a nice layout
-		Drawable drawable = ControllerDisplay.getStateListDrawableFromType(
-				this, button);
+		Drawable drawable = ControllerDisplay.getStateListDrawableFromDesign(
+				this, button.design);
 		templateButton.setBackgroundDrawable(drawable);
 
-		int height = SshControllerUtils.convertDpToPx(this, button.height);
-		int width = SshControllerUtils.convertDpToPx(this, button.width);
+		int height = SshControllerUtils.convertDpToPx(this, button.design.height);
+		int width = SshControllerUtils.convertDpToPx(this, button.design.width);
 		templateButton.setMinimumHeight(height);
 		templateButton.setMaxHeight(height);
 		templateButton.setMinimumWidth(width);
@@ -194,13 +194,13 @@ public class EditButtonDesignActivity extends SshControllerActivity implements
 	public void onProgressChanged(SeekBar seekBar, int progress,
 			boolean fromUser) {
 		if (seekBar == seekBarHeight) {
-			button.height = Values.possibleHeights[progress];
+			button.design.height = Values.possibleHeights[progress];
 		} else if (seekBar == seekBarWidth) {
-			button.width = Values.possibleWidths[progress];
+			button.design.width = Values.possibleWidths[progress];
 		} else if (seekBar == seekBarStroke) {
-			button.stroke = Values.possibleStroke[progress];
+			button.design.cornerRadius = Values.possibleCornerRadius[progress];
 		} else if (seekBar == seekBarBorder) {
-			button.border = Values.possibleBorder[progress];
+			button.design.borderWidth = Values.possibleBorder[progress];
 		}
 		save();
 		refresh();
@@ -220,9 +220,9 @@ public class EditButtonDesignActivity extends SshControllerActivity implements
 		if (textView.getClass() == android.widget.TextView.class) {
 			String text = ((TextView) textView).getText().toString();
 			if (text.equals(getText(R.string.oval))) {
-				button.shape = GradientDrawable.OVAL;
+				button.design.shape = GradientDrawable.OVAL;
 			} else if (text.equals(getText(R.string.rectangle))) {
-				button.shape = GradientDrawable.RECTANGLE;
+				button.design.shape = GradientDrawable.RECTANGLE;
 			}
 		}
 		refresh();
