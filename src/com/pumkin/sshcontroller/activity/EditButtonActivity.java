@@ -49,6 +49,15 @@ public class EditButtonActivity extends SshControllerActivity {
 		overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 	}
 	
+	public void editButtonLabel(View v) {
+		Log.d(this.getClass().toString(), "editButtonLabel for uuid "+button.uuid);
+		Intent startNewActivityOpen = new Intent(
+				EditButtonActivity.this, EditButtonDesignActivity.class);
+		startNewActivityOpen.putExtra("uuid", button.uuid);
+		startActivityForResult(startNewActivityOpen, 0);
+		overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+	}
+	
 	public void deleteButton(View v) {
 		Log.d(this.getClass().toString(), "deleteButton for uuid "+button.uuid);
 		controller.deleteButtonByUuid(button.uuid);

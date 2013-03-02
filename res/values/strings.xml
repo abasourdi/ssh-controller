@@ -49,6 +49,7 @@
     
     <!-- Edit button -->
     <string name="edit_button_action">Edit action</string>
+    <string name="edit_button_label">Edit label</string>
     <string name="edit_button_design">Edit design</string>
     <string name="delete_button">Delete</string>
     

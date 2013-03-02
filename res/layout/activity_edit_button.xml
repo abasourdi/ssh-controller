@@ -10,38 +10,51 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true" >
 t
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
-            
-             <Button
-        android:layout_margin="10dp"
-        android:minHeight="50dp"
-        android:textColor="@color/button_text_color"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/edit_button_design"
-        android:background="@drawable/add_button"
-        android:onClick="editButtonDesign"/>
-              <Button
-        android:layout_margin="10dp"
-        android:minHeight="50dp"
-        android:textColor="@color/button_text_color"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/edit_button_action"
-        android:background="@drawable/add_button"
-        android:onClick="editButtonAction"/>
-               <Button
-        android:layout_margin="10dp"
-        android:minHeight="50dp"
-        android:textColor="@color/button_text_color"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/delete_button"
-        android:background="@drawable/add_button"
-        android:onClick="deleteButton"/>
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/add_button"
+                android:minHeight="50dp"
+                android:onClick="editButtonDesign"
+                android:text="@string/edit_button_design"
+                android:textColor="@color/button_text_color" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/add_button"
+                android:minHeight="50dp"
+                android:onClick="editButtonLabel"
+                android:text="@string/edit_button_label"
+                android:textColor="@color/button_text_color" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/add_button"
+                android:minHeight="50dp"
+                android:onClick="editButtonAction"
+                android:text="@string/edit_button_action"
+                android:textColor="@color/button_text_color" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/add_button"
+                android:minHeight="50dp"
+                android:onClick="deleteButton"
+                android:text="@string/delete_button"
+                android:textColor="@color/button_text_color" />
         </LinearLayout>
     </ScrollView>
 
