@@ -9,11 +9,7 @@ import java.util.ArrayList;
 
 import android.content.Context;
 import android.util.Log;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
-import com.pumkin.sshcontroller.activity.R;
 import com.pumkin.sshcontroller.activity.SshControllerActivity;
 import com.pumkin.sshcontroller.adapter.ControllerAdapter;
 import com.pumkin.sshcontroller.constants.Action;

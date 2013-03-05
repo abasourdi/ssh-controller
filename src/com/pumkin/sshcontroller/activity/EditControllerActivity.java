@@ -117,7 +117,7 @@ public class EditControllerActivity extends SshControllerActivity implements
 		int[] colorsInversed = { Color.RED, Color.BLACK };
 		// TODO CHANGE THAT
 		Button tmpButton = new Button(new Design(colors, colorsInversed,
-				GradientDrawable.OVAL, Color.GREEN, 2, 15, 90, 90));
+				GradientDrawable.OVAL, Color.GREEN, 2, 15, 90, 90, 15));
 
 		try {
 			LinearLayout lL = (LinearLayout) v;

@@ -5,7 +5,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="add_controller">Create New Controller</string>
-
     <string name="manage_controller_title">Choose an action</string>
     <string name="manage_controller_message">What do you want to do for the controller named ?</string>
     <string name="rename">Rename</string>
@@ -16,43 +15,38 @@
     <string name="cancel">Cancel</string>
     <string name="rename_controller_title">Rename controller</string>
     <string name="rename_controller_message">What should be the new name of the controller named %1$s</string>
-    
-    
+
     <!-- Add/EditController -->
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="host">host or ip</string>
     <string name="port">port</string>
-    
     <string name="port_is_not_a_valid_number">port needs to be a positive integer</string>
     <string name="please_wait">Please wait</string>
     <string name="checking_ssh_parameters">Checking ssh parameters in progress&#8230;</string>
     <string name="listing_files">Listing the files&#8230;</string>
     <string name="cannot_get_ssh_connections">Cannot have access to the ssh endpoint</string>
-    
-    
+
     <!-- Controller -->
     <string name="enable_edit_mode">Enable edit mode</string>
     <string name="quit_edit_mode">Quit edit mode</string>
     <string name="add_button">Add a new button</string>
     <string name="add_circular_button">Add new circular button</string>
     <string name="add_rectangular_button">Add new rectangular button</string>
-    
+
     <!-- Edit controller -->
     <string name="simple_red_button">Circular red button</string>
     <string name="simple_blue_button">Circular blue button</string>
     <string name="simple_green_button">Circular green button</string>
-    
     <string name="simple_blue_button_rectangular_horizontal">Horizontal blue button</string>
     <string name="simple_blue_button_rectangular_vertical">Vertical blue button</string>
-    
-    
+
     <!-- Edit button -->
     <string name="edit_button_action">Edit action</string>
     <string name="edit_button_label">Edit label</string>
     <string name="edit_button_design">Edit design</string>
     <string name="delete_button">Delete</string>
-    
+
     <!-- Edit button design -->
     <string name="current_button">current button:</string>
     <string name="colors_normal">start colors:</string>
@@ -61,32 +55,37 @@
     <string name="shape">shape:</string>
     <string name="rectangle">rectangle</string>
     <string name="oval">oval</string>
+
     <string-array name="shape_arrays">
         <item>@string/rectangle</item>
         <item>@string/oval</item>
     </string-array>
+
     <string name="widthWithDp">width: %1$ddp</string>
     <string name="heightWithDp">height: %1$ddp</string>
     <string name="border">border: %1$ddp</string>
     <string name="borderColor">border color</string>
     <string name="stroke">stroke: %1$ddp</string>
-    
+
     <!-- Edit button action -->
-    <string name="label">Label:</string>
     <string name="action">Action</string>
     <string name="repeataction">Repeat Action Every </string>
     <string name="milliseconds">milliseconds</string>
     <string name="stateaction">State action</string>
     <string name="askforconfirmation">confirmation</string>
     
+    
+    <!-- Edit button action -->
+    <string name="label">Label:</string>
+    <string name="angle">Angle: %1$ddp</string>
+    <string name="labelSize">Size: %1$ddp</string>
+
     <!-- Choose Template -->
     <string name="selecttemplate">Select template</string>
     <string name="selectcoloronly">Select color only</string>
-    
-    
+
     <!-- Use Action -->
     <string name="titleuseaction">Using action</string>
     <string name="labeluseaction">are you sure you want to execute this action</string>
-    
-    
+
 </resources>

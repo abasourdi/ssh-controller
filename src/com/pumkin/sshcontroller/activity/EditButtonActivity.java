@@ -4,13 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.pumkin.sshcontroller.object.Button;
-import com.pumkin.sshcontroller.object.Controller;
 
 public class EditButtonActivity extends SshControllerActivity {
 
@@ -52,7 +47,7 @@ public class EditButtonActivity extends SshControllerActivity {
 	public void editButtonLabel(View v) {
 		Log.d(this.getClass().toString(), "editButtonLabel for uuid "+button.uuid);
 		Intent startNewActivityOpen = new Intent(
-				EditButtonActivity.this, EditButtonDesignActivity.class);
+				EditButtonActivity.this, EditButtonLabelActivity.class);
 		startNewActivityOpen.putExtra("uuid", button.uuid);
 		startActivityForResult(startNewActivityOpen, 0);
 		overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);

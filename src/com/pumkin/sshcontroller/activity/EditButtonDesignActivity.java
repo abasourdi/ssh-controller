@@ -176,6 +176,9 @@ public class EditButtonDesignActivity extends SshControllerActivity implements
 		templateButton.setMaxHeight(height);
 		templateButton.setMinimumWidth(width);
 		templateButton.setMaxWidth(width);
+		templateButton.setText(button.label);
+		templateButton.setTextSize(button.labelSizeSp);
+		templateButton.setTextColor(button.labelColor);
 	}
 
 	public void chooseTemplate(View v) {

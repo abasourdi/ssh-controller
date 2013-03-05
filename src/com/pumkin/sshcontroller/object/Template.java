@@ -19,10 +19,10 @@ public class Template {
 
 	public Template(String name, int[] colors, int[] pressedColors, int shape,
 			int borderColor, int borderWidth, int cornerRadius, int width,
-			int height) {
+			int height, int angle) {
 		this.name = name;
 		this.design = new Design(colors, pressedColors, shape, borderColor,
-				borderWidth, cornerRadius, width, height);
+				borderWidth, cornerRadius, width, height, angle);
 	}
 
 	/**
@@ -32,6 +32,8 @@ public class Template {
 	public static ArrayList<Template> getTemplates() {
 		ArrayList<Template> res = new ArrayList<Template>();
 
+		int defaultAngle=0;
+		
 		int topBlue = Color.parseColor("#3b5998");
 		int bottomBlue = Color.parseColor("#8b9dc3");
 
@@ -51,7 +53,7 @@ public class Template {
 		
 		Design design = new Design(colorsBlue, pressedColorsBlue,
 				GradientDrawable.OVAL, border, 2, 20, Values.defaultWidth,
-				Values.defaultHeight);
+				Values.defaultHeight, defaultAngle);
 
 		Template template = new Template("Blue oval button", design);
 		res.add(template);
@@ -66,7 +68,7 @@ public class Template {
 		
 		design = new Design(colorsGreen, pressedColorsGreen,
 				GradientDrawable.OVAL, border, 2, 20, Values.defaultWidth,
-				Values.defaultHeight);
+				Values.defaultHeight, defaultAngle);
 
 		template = new Template("Green oval button", design);
 		res.add(template);
@@ -81,7 +83,7 @@ public class Template {
 		
 		design = new Design(colorsYellow, pressedColorsYellow,
 				GradientDrawable.OVAL, border, 2, 20, Values.defaultWidth,
-				Values.defaultHeight);
+				Values.defaultHeight, defaultAngle);
 
 		template = new Template("Yellow oval button", design);
 		res.add(template);
@@ -96,7 +98,7 @@ public class Template {
 		
 		design = new Design(colorsRed, pressedColorsRed,
 				GradientDrawable.OVAL, border, 2, 20, Values.defaultWidth,
-				Values.defaultHeight);
+				Values.defaultHeight, defaultAngle);
 
 		template = new Template("Red oval button", design);
 		res.add(template);

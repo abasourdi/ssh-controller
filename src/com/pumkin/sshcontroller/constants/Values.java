@@ -13,4 +13,7 @@ public class Values {
 
 	public static final int defaultWidth=120;
 	public static final int defaultHeight=120;
+
+	public static final int[] possibleAngle = { 0, 90, 180, 270};
+	public static final int[] possibleLabelSize = { 15, 25, 35, 45, 60};
 }

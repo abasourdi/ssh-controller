@@ -25,7 +25,7 @@ public class Design implements Serializable {
 	 */
 	public Design(int[] colors, int[] pressedColors, int shape,
 			int borderColor, int borderWidth, int cornerRadius, int width,
-			int height) {
+			int height, int angle) {
 		this.colors = colors;
 		this.pressedColors = pressedColors;
 		this.shape = shape;
@@ -34,6 +34,7 @@ public class Design implements Serializable {
 		this.cornerRadius = cornerRadius;
 		this.width = width;
 		this.height = height;
+		this.angle=angle;
 	}
 
 	public int[] colors;
@@ -44,10 +45,11 @@ public class Design implements Serializable {
 	public int cornerRadius;
 	public int width;
 	public int height;
+	public int angle;
 
 	public Design clone() {
 		return new Design(colors, pressedColors, shape, borderColor,
-				borderWidth, cornerRadius, width, height);
+				borderWidth, cornerRadius, width, height, angle);
 	}
 
 }

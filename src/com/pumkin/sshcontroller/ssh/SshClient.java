@@ -119,8 +119,9 @@ public class SshClient {
 		ArrayList<String> res = new ArrayList<String>();
 		try {
 			ChannelExec channel = (ChannelExec) session.openChannel("exec");
+			//channel.setXForwarding(true);
 			channel.setCommand(command);
-			System.out.println(command);
+			System.out.println("after xforwarding: "+command);
 
 			channel.connect();
 			channel.setInputStream(null);

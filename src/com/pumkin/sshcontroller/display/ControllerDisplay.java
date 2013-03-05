@@ -89,8 +89,9 @@ public class ControllerDisplay {
 		for (int i = 0; i < controller.buttons.size(); i++) {
 			Button button = controller.buttons.get(i);
 			TextView displayedButton = new TextView(context);
-			displayedButton.setText(button.displayedName);
-
+			displayedButton.setText(button.label);
+			displayedButton.setTextSize(button.labelSizeSp);
+			displayedButton.setTextColor(button.labelColor);
 			
 			displayedButton.setBackgroundDrawable(getStateListDrawableFromDesign(context,
 					button.design));
@@ -101,6 +102,7 @@ public class ControllerDisplay {
 
 			RelativeLayout.LayoutParams layoutParams = getLayoutParams(context,
 					button);
+			
 
 			displayedButton.setTag(button.uuid);
 			displayedButton.setOnClickListener(onClickListener);
@@ -157,7 +159,7 @@ public class ControllerDisplay {
 		}
 		return res;
 	}
-
+	
 	public static StateListDrawable getStateListDrawableFromDesign(
 			Context context, Design design) {
 		StateListDrawable res = new StateListDrawable();
