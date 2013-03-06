@@ -8,8 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.pumkin.sshcontroller.activity.R;
-import com.pumkin.sshcontroller.activity.SshControllerActivity;
 import com.pumkin.sshcontroller.object.Controller;
+import com.pumkin.sshcontroller.object.CurrentConfiguration;
 
 public class ControllerAdapter extends BaseAdapter {
 
@@ -50,13 +50,13 @@ public class ControllerAdapter extends BaseAdapter {
 		holder.name.setText(Controller.controllers.get(position).name);
 		switch(Controller.controllers.get(position).state){
 		case Controller._CONNECTED:
-			holder.status.setBackgroundDrawable(SshControllerActivity.instance.getResources().getDrawable(R.drawable.controller_state_online));
+			holder.status.setBackgroundDrawable(CurrentConfiguration.instance.getResources().getDrawable(R.drawable.controller_state_online));
 			break;
 		case Controller._DISCONNECTED:
-			holder.status.setBackgroundDrawable(SshControllerActivity.instance.getResources().getDrawable(R.drawable.controller_state_offline));
+			holder.status.setBackgroundDrawable(CurrentConfiguration.instance.getResources().getDrawable(R.drawable.controller_state_offline));
 			break;
 		case Controller._UNKNOWN:
-			holder.status.setBackgroundDrawable(SshControllerActivity.instance.getResources().getDrawable(R.drawable.controller_state_unknown));
+			holder.status.setBackgroundDrawable(CurrentConfiguration.instance.getResources().getDrawable(R.drawable.controller_state_unknown));
 			break;
 		}
 		

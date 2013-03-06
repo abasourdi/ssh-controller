@@ -19,8 +19,8 @@ import android.widget.RelativeLayout;
 import com.pumkin.sshcontroller.display.ControllerDisplay;
 import com.pumkin.sshcontroller.object.Button;
 import com.pumkin.sshcontroller.object.Controller;
+import com.pumkin.sshcontroller.object.CurrentConfiguration;
 import com.pumkin.sshcontroller.object.Design;
-import com.pumkin.sshcontroller.utils.SshControllerUtils;
 
 public class EditControllerActivity extends SshControllerActivity implements
 		OnClickListener, OnLongClickListener, OnTouchListener {
@@ -39,13 +39,13 @@ public class EditControllerActivity extends SshControllerActivity implements
 		setContentView(R.layout.activity_edit_controller);
 		relativeLayout = (RelativeLayout) findViewById(R.id.controller_layout);
 		Log.i(this.getClass().getName(),
-				"nb buttons: " + controller.buttons.size());
+				"nb buttons: " + CurrentConfiguration.controller.buttons.size());
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
-		ControllerDisplay.resetLayout(this, relativeLayout, controller, this,
+		ControllerDisplay.resetLayout(this, relativeLayout, CurrentConfiguration.controller, this,
 				this, this);
 	}
 
@@ -126,9 +126,9 @@ public class EditControllerActivity extends SshControllerActivity implements
 
 		}
 
-		controller.addButton(tmpButton);
+		CurrentConfiguration.controller.addButton(tmpButton);
 		Controller.saveControllers();
-		ControllerDisplay.resetLayout(this, relativeLayout, controller, this,
+		ControllerDisplay.resetLayout(this, relativeLayout, CurrentConfiguration.controller, this,
 				this, this);
 	}
 
@@ -164,7 +164,7 @@ public class EditControllerActivity extends SshControllerActivity implements
 			break;
 		case MotionEvent.ACTION_DOWN:
 			uuid = view.getTag().toString();
-			Button b = controller.getButtonByUuid(uuid);
+			Button b = CurrentConfiguration.controller.getButtonByUuid(uuid);
 			initialPosX = (int) event.getX();
 			initialPosY = (int) event.getY();
 			Log.i(this.getClass().getName(), "initial pos: " + initialPosX
@@ -180,7 +180,7 @@ public class EditControllerActivity extends SshControllerActivity implements
 				;
 				int y = (int) (view.getTop() + event.getY()) + initialPosY;
 				;
-				ControllerDisplay.moveButton(this, relativeLayout, controller,
+				ControllerDisplay.moveButton(this, relativeLayout, CurrentConfiguration.controller,
 						uuid, x - initialPosX, y - initialPosY);
 			}
 			break;

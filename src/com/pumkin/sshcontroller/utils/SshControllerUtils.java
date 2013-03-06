@@ -3,13 +3,13 @@ package com.pumkin.sshcontroller.utils;
 import android.content.Context;
 import android.content.Intent;
 
-import com.pumkin.sshcontroller.activity.SshControllerActivity;
+import com.pumkin.sshcontroller.object.CurrentConfiguration;
 
 public class SshControllerUtils {
 
 	public static void sendBroadcast(String message){
 		Intent intent=new Intent(message);
-		SshControllerActivity.instance.sendBroadcast(intent);
+		CurrentConfiguration.instance.sendBroadcast(intent);
 	}
 	
 	public static int convertDpToPx(Context context, int dps){

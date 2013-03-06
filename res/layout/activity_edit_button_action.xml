@@ -62,8 +62,49 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="100dp"
-                android:orientation="horizontal"
-                android:visibility="gone" >
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:gravity="center_vertical"
+                    android:minWidth="40dp"
+                    android:text="@string/sendCoordinate" />
+                
+                <CheckBox 
+                    android:id="@+id/sendCoordinate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:onClick="onSendCoordinateChange"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/repeatedActionCheckBoxLinearLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="100dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:gravity="center_vertical"
+                    android:minWidth="40dp"
+                    android:text="@string/enableRepeatedAction" />
+                
+                <CheckBox 
+                    android:id="@+id/repeatedActionCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:onClick="onRepeatedActionChange"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/repeatedActionEditBoxLinearLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="100dp"
+                android:orientation="horizontal" >
 
                 <TextView
                     android:layout_width="wrap_content"

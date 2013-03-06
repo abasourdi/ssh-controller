@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.GradientDrawable.Orientation;
 import android.graphics.drawable.StateListDrawable;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 
 import com.pumkin.sshcontroller.object.Button;
 import com.pumkin.sshcontroller.object.Controller;
+import com.pumkin.sshcontroller.object.CurrentConfiguration;
 import com.pumkin.sshcontroller.object.Design;
 import com.pumkin.sshcontroller.utils.SshControllerUtils;
 
@@ -86,15 +88,24 @@ public class ControllerDisplay {
 		// positions
 		relativeLayout.removeAllViews();
 
+		// We change the layout to center all the button
+
+		int step = (SshControllerUtils.convertDpToPx(context, 30));
+
+		relativeLayout.setPadding(
+				(CurrentConfiguration.widthInPixel % step) / 2,
+				(CurrentConfiguration.heightInPixel % step) / 2, 0, 0);
+
 		for (int i = 0; i < controller.buttons.size(); i++) {
 			Button button = controller.buttons.get(i);
 			TextView displayedButton = new TextView(context);
 			displayedButton.setText(button.label);
 			displayedButton.setTextSize(button.labelSizeSp);
 			displayedButton.setTextColor(button.labelColor);
-			
-			displayedButton.setBackgroundDrawable(getStateListDrawableFromDesign(context,
-					button.design));
+
+			displayedButton
+					.setBackgroundDrawable(getStateListDrawableFromDesign(
+							context, button.design));
 			displayedButton.setMinimumHeight(SshControllerUtils.convertDpToPx(
 					context, button.design.height));
 			displayedButton.setMinimumWidth(SshControllerUtils.convertDpToPx(
@@ -102,7 +113,6 @@ public class ControllerDisplay {
 
 			RelativeLayout.LayoutParams layoutParams = getLayoutParams(context,
 					button);
-			
 
 			displayedButton.setTag(button.uuid);
 			displayedButton.setOnClickListener(onClickListener);
@@ -120,55 +130,50 @@ public class ControllerDisplay {
 	public static LayoutParams getLayoutParams(Context context, Button button) {
 		return getLayoutParams(context, button.marginLeft, button.marginTop);
 	}
-	
-	public static LayoutParams getLayoutParams(Context context, int marginLeft, int marginTop) {
+
+	public static LayoutParams getLayoutParams(Context context, int marginLeft,
+			int marginTop) {
 		LayoutParams res = new RelativeLayout.LayoutParams(
 				RelativeLayout.LayoutParams.WRAP_CONTENT,
 				RelativeLayout.LayoutParams.WRAP_CONTENT);
-		res.setMargins(
-				SshControllerUtils.convertDpToPx(context, marginLeft),
-				SshControllerUtils.convertDpToPx(context, marginTop), 0,
-				0);
+		res.setMargins(SshControllerUtils.convertDpToPx(context, marginLeft),
+				SshControllerUtils.convertDpToPx(context, marginTop), 0, 0);
 		return res;
 	}
 
-		
+	public static Drawable getDrawableFromDesign(Context context,
+			Design design, boolean pressed) {
 
-	public static Drawable getDrawableFromDesign(Context context, Design design,
-			boolean pressed) {
-
-		
 		GradientDrawable res;
-		if(pressed){
-		res = new GradientDrawable(Orientation.TOP_BOTTOM,
-				design.colors);
-		}else{
+		if (pressed) {
+			res = new GradientDrawable(Orientation.TOP_BOTTOM, design.colors);
+		} else {
 			res = new GradientDrawable(Orientation.TOP_BOTTOM,
 					design.pressedColors);
 		}
 		res.setShape(design.shape);
-		if (design.shape != GradientDrawable.OVAL && design.cornerRadius!= 0) {
+		if (design.shape != GradientDrawable.OVAL && design.cornerRadius != 0) {
 			float f = Float.parseFloat(""
-					+ SshControllerUtils.convertDpToPx(context, design.cornerRadius));
+					+ SshControllerUtils.convertDpToPx(context,
+							design.cornerRadius));
 			res.setCornerRadius(f);
 		}
 		if (design.borderWidth != 0) {
-			res.setStroke(
-					SshControllerUtils.convertDpToPx(context, design.borderWidth),
-					design.borderColor);
+			res.setStroke(SshControllerUtils.convertDpToPx(context,
+					design.borderWidth), design.borderColor);
 		}
 		return res;
 	}
-	
+
 	public static StateListDrawable getStateListDrawableFromDesign(
 			Context context, Design design) {
 		StateListDrawable res = new StateListDrawable();
-		 res.addState(new int[] {android.R.attr.state_pressed},
-		 getDrawableFromDesign(context, design, true));
+		res.addState(new int[] { android.R.attr.state_pressed },
+				getDrawableFromDesign(context, design, true));
 
-		 //Normal state
-		 res.addState(new int[] {},
-				 getDrawableFromDesign(context, design, false));
+		// Normal state
+		res.addState(new int[] {},
+				getDrawableFromDesign(context, design, false));
 		return res;
 	}
 

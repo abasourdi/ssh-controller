@@ -69,7 +69,10 @@
 
     <!-- Edit button action -->
     <string name="action">Action</string>
-    <string name="repeataction">Repeat Action Every </string>
+    <string name="noActionDefined">No action defined, click here</string>
+    <string name="sendCoordinate">Send coordinate</string>
+    <string name="enableRepeatedAction">Enable repeated action</string>
+    <string name="repeataction">Every </string>
     <string name="milliseconds">milliseconds</string>
     <string name="stateaction">State action</string>
     <string name="askforconfirmation">confirmation</string>

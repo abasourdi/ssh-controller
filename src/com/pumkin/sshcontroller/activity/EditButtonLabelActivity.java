@@ -2,29 +2,22 @@ package com.pumkin.sshcontroller.activity;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.pumkin.sshcontroller.adapter.ColorAdapter;
 import com.pumkin.sshcontroller.constants.Values;
 import com.pumkin.sshcontroller.display.ControllerDisplay;
 import com.pumkin.sshcontroller.object.Button;
 import com.pumkin.sshcontroller.object.Controller;
+import com.pumkin.sshcontroller.object.CurrentConfiguration;
 import com.pumkin.sshcontroller.utils.SshControllerUtils;
 
 public class EditButtonLabelActivity extends SshControllerActivity implements
@@ -47,7 +40,7 @@ public class EditButtonLabelActivity extends SshControllerActivity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_button_label);
 
-		button = controller.getButtonByUuid(getIntent().getExtras().get("uuid")
+		button = CurrentConfiguration.controller.getButtonByUuid(getIntent().getExtras().get("uuid")
 				.toString());
 
 		templateButton = (android.widget.Button) findViewById(R.id.template_button);

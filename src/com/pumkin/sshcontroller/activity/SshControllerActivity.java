@@ -11,16 +11,12 @@ import android.util.Log;
 
 import com.pumkin.sshcontroller.constants.Action;
 import com.pumkin.sshcontroller.object.Controller;
+import com.pumkin.sshcontroller.object.CurrentConfiguration;
 import com.pumkin.sshcontroller.ssh.SshClient;
 
-public abstract class SshControllerActivity extends Activity {
-
-	public static SshControllerActivity instance=null; 
+public abstract class SshControllerActivity extends Activity { 
 	
 	private BroadcastReceiver mReceiver;
-	public static Controller controller;
-	
-	public static SshClient currentSshClient=null;
 	
 	public void backIfNotConnected(){
 		Thread t=new Thread(){
@@ -37,38 +33,38 @@ public abstract class SshControllerActivity extends Activity {
 	
 	public boolean isConnected(){
 		getCurrentClient();
-		if(currentSshClient==null){
+		if(CurrentConfiguration.currentSshClient==null){
 			return false;
-		}else if(currentSshClient.isConnected()){
+		}else if(CurrentConfiguration.currentSshClient.isConnected()){
 			return true;
 		}else{
 			//Try to connect the client
-			currentSshClient.connect();
-			return currentSshClient.isConnected();
+			CurrentConfiguration.currentSshClient.connect();
+			return CurrentConfiguration.currentSshClient.isConnected();
 		}
 	}
 	
 	public static synchronized SshClient getCurrentClient(){
-		if(controller==null){
+		if(CurrentConfiguration.controller==null){
 			return null;
 		}
-		if(currentSshClient==null){
-			currentSshClient=new SshClient(controller.sshConfiguration);
+		if(CurrentConfiguration.currentSshClient==null){
+			CurrentConfiguration.currentSshClient=new SshClient(CurrentConfiguration.controller.sshConfiguration);
 		}
-		if(!currentSshClient.isConnected()){
-			currentSshClient.connect();
-			if(!currentSshClient.isConnected()){
+		if(!CurrentConfiguration.currentSshClient.isConnected()){
+			CurrentConfiguration.currentSshClient.connect();
+			if(!CurrentConfiguration.currentSshClient.isConnected()){
 				//Unable to connect
 				return null;
 			}
 		}
-		return currentSshClient;
+		return CurrentConfiguration.currentSshClient;
 	}
 	
 	public void reinitializeSshClient(){
-		if(controller!=null){
-			currentSshClient=new SshClient(controller.sshConfiguration);
-			currentSshClient.connect();
+		if(CurrentConfiguration.controller!=null){
+			CurrentConfiguration.currentSshClient=new SshClient(CurrentConfiguration.controller.sshConfiguration);
+			CurrentConfiguration.currentSshClient.connect();
 		}
 	}
 	
@@ -83,7 +79,7 @@ public abstract class SshControllerActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		if(Controller.controllers==null){
-	        instance=this;
+			CurrentConfiguration.instance=this;
 			Controller.loadControllers();
 		}
 		
@@ -94,7 +90,7 @@ public abstract class SshControllerActivity extends Activity {
 	  @Override
 	    protected void onResume() {
 	        super.onResume();
-	        instance=this;
+	        CurrentConfiguration.instance=this;
 	        mReceiver = new BroadcastReceiver() {
 	            @Override
 	            public void onReceive(Context context, Intent intent) {

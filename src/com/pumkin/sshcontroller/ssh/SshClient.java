@@ -19,7 +19,7 @@ public class SshClient {
 
 	String currentPath = "";
 
-//	boolean isWindows = false;
+	// boolean isWindows = false;
 
 	public SshClient(SshConfiguration configuration) {
 		this.configuration = configuration;
@@ -27,6 +27,7 @@ public class SshClient {
 
 	public boolean connect() {
 		try {
+			Log.e("toto", "TEST NEW CONNECTE");
 			JSch shell = new JSch();
 			session = shell.getSession(configuration.username,
 					configuration.host, configuration.port);
@@ -36,10 +37,23 @@ public class SshClient {
 			session.setConfig("StrictHostKeyChecking", "no");
 
 			session.setUserInfo(ui);
-			session.setTimeout(20000);
+			// If more than 5 secs, fuck of
+			session.setTimeout(30000);
+			System.out.println("before connect");
 			session.connect();
-
+			System.out.println("after connect");
+ 
 			if (isConnected()) {
+				//We need to open a channel to speed things up later
+				Thread t=new Thread(){
+					@Override
+					public void run(){
+						System.out.println("EXECUTE");
+						System.out.println(session.isConnected());
+						System.out.println("ENDEXECUTE");
+					}
+				};
+				t.start();
 				return true;
 			}
 		} catch (Exception e) {
@@ -54,7 +68,7 @@ public class SshClient {
 		if (tmpRes.size() > 0) {
 			if ("0".equals(tmpRes.get(tmpRes.size() - 1))) {
 				System.out.println("returning path: " + tmpRes.get(0));
-//				isWindows = false;
+				// isWindows = false;
 				return tmpRes.get(0).trim();
 			}
 			// Log.i(this.getClass().toString(),
@@ -62,27 +76,24 @@ public class SshClient {
 			System.out.println("ignoring");
 		}
 
-		System.out.println("ignoring");
-		// WINDOWS SHELL,
-		tmpRes = execute("cmd /c chdir", true);
-		if (tmpRes.size() > 0) {
-			if ("0".equals(tmpRes.get(tmpRes.size() - 1))) {
-//				isWindows = true;
-				return tmpRes.get(0).trim();
-			}
-			Log.i(this.getClass().toString(), "ignoring as cmd doesn't work");
-		}
+		/*
+		 * System.out.println("ignoring"); // WINDOWS SHELL, tmpRes =
+		 * execute("cmd /c chdir", true); if (tmpRes.size() > 0) { if
+		 * ("0".equals(tmpRes.get(tmpRes.size() - 1))) { // isWindows = true;
+		 * return tmpRes.get(0).trim(); } Log.i(this.getClass().toString(),
+		 * "ignoring as cmd doesn't work"); }
+		 */
 		return "/";
 	}
 
 	public ArrayList<SshFile> ls(String path) {
 		String command;
-//		if (isWindows) {
-//			command = "ls -l '" + path + "'";
-//		} else {
-//			// command = "ls -lrth '" + path + "'| tr -s ' ' | cut -d' ' -f1,9";
-//			command = "ls -l '" + path + "'";
-//		}
+		// if (isWindows) {
+		// command = "ls -l '" + path + "'";
+		// } else {
+		// // command = "ls -lrth '" + path + "'| tr -s ' ' | cut -d' ' -f1,9";
+		// command = "ls -l '" + path + "'";
+		// }
 		command = "ls -l '" + path + "'";
 		/*
 		 * Classic ls command is 1 rights
@@ -104,7 +115,7 @@ public class SshClient {
 			String name = list[j];
 			j++;
 			for (; j < list.length; j++) {
-				name += " "+list[j];
+				name += " " + list[j];
 			}
 			res.add(new SshFile(rights, name, path));
 		}
@@ -119,12 +130,18 @@ public class SshClient {
 		ArrayList<String> res = new ArrayList<String>();
 		try {
 			ChannelExec channel = (ChannelExec) session.openChannel("exec");
-			//channel.setXForwarding(true);
+
+			// channel.setXForwarding(true);
 			channel.setCommand(command);
-			System.out.println("after xforwarding: "+command);
 
 			channel.connect();
+			/*
+			 * HERE, there should always be at least 10 channel opened or
+			 * something like that
+			 */
+			System.out.println("after connect");
 			channel.setInputStream(null);
+			System.out.println("after setInputStream");
 			((ChannelExec) channel).setErrStream(System.err);
 			// InputStream inErr=channel.getErrStream();
 			InputStream in = channel.getInputStream();
@@ -164,7 +181,7 @@ public class SshClient {
 				}
 				try {
 					Thread.sleep(1000);
-				} catch (Exception ee) {
+				} catch (Exception e) {
 				}
 			}
 			channel.disconnect();

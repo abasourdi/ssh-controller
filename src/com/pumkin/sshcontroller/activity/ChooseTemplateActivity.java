@@ -10,6 +10,7 @@ import android.widget.GridView;
 import com.pumkin.sshcontroller.adapter.TemplateAdapter;
 import com.pumkin.sshcontroller.object.Button;
 import com.pumkin.sshcontroller.object.Controller;
+import com.pumkin.sshcontroller.object.CurrentConfiguration;
 import com.pumkin.sshcontroller.object.Design;
 
 public class ChooseTemplateActivity extends SshControllerActivity implements
@@ -24,7 +25,7 @@ public class ChooseTemplateActivity extends SshControllerActivity implements
 		setContentView(R.layout.activity_choose_template);
 		if (getIntent() != null && getIntent().getExtras() != null
 				&& getIntent().getExtras().get("uuid") != null) {
-			button = controller.getButtonByUuid(getIntent().getExtras()
+			button = CurrentConfiguration.controller.getButtonByUuid(getIntent().getExtras()
 					.get("uuid").toString());
 		} else {
 			button = null;
@@ -54,7 +55,7 @@ public class ChooseTemplateActivity extends SshControllerActivity implements
 
 		if (button == null) {
 			Button newButton = new Button(newDesign);
-			controller.addButton(newButton);
+			CurrentConfiguration.controller.addButton(newButton);
 			Controller.saveControllers();
 		} else {
 			button.design = newDesign;

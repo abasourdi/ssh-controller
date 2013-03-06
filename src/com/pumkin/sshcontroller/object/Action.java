@@ -6,10 +6,13 @@ import java.util.ArrayList;
 public class Action implements Serializable{
 
 	public boolean confirmation=false;
+	public boolean sendCoordinate=false;
+	
 	public String command="";
 	public ArrayList<String> parameters=new ArrayList<String>();
 	
-	public int pressedInterval=0;
+	public boolean repeatedEnabled=false;
+	public int repeatedInterval=50;
 	
 	public String getFullCommand(){
 		String res=command;

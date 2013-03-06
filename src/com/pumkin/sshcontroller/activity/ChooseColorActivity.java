@@ -4,13 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.pumkin.sshcontroller.object.Button;
-import com.pumkin.sshcontroller.object.Controller;
+import com.pumkin.sshcontroller.object.CurrentConfiguration;
 
 public class ChooseColorActivity extends SshControllerActivity {
 
@@ -22,7 +18,7 @@ public class ChooseColorActivity extends SshControllerActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_button_design);
-		button=controller.getButtonByUuid(getIntent().getExtras().get("uuid").toString());
+		button=CurrentConfiguration.controller.getButtonByUuid(getIntent().getExtras().get("uuid").toString());
 	}
 
 	@Override

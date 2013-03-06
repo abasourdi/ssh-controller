@@ -16,6 +16,7 @@ import com.pumkin.sshcontroller.adapter.ChooseFileAdapter;
 import com.pumkin.sshcontroller.constants.Action;
 import com.pumkin.sshcontroller.object.Button;
 import com.pumkin.sshcontroller.object.Controller;
+import com.pumkin.sshcontroller.object.CurrentConfiguration;
 import com.pumkin.sshcontroller.object.SshFile;
 import com.pumkin.sshcontroller.ssh.SshClient;
 import com.pumkin.sshcontroller.utils.SshControllerUtils;
@@ -41,7 +42,7 @@ public class ChooseScriptActivity extends SshControllerActivity implements OnIte
 		setContentView(R.layout.activity_choose_script);
 	
 		instanceChooseActivity=this;
-		button=controller.getButtonByUuid(getIntent().getExtras().get("uuid").toString());
+		button=CurrentConfiguration.controller.getButtonByUuid(getIntent().getExtras().get("uuid").toString());
 		lvListe = (ListView) findViewById(R.id.scriptList);
 		
 		path=(TextView) findViewById(R.id.currentPath);

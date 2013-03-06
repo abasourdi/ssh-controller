@@ -9,8 +9,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.pumkin.sshcontroller.constants.Action;
-import com.pumkin.sshcontroller.constants.Parameter;
 import com.pumkin.sshcontroller.object.Controller;
+import com.pumkin.sshcontroller.object.CurrentConfiguration;
 import com.pumkin.sshcontroller.object.SshConfiguration;
 import com.pumkin.sshcontroller.ssh.SshConnection;
 
@@ -97,9 +97,9 @@ public class AddControllerActivity extends SshControllerActivity {
 			cancelProgressDialog();
 			Intent startNewActivityOpen = new Intent(
 					AddControllerActivity.this, ControllerActivity.class);
-			controller=new Controller(currentConfiguration);
-			controller.state=Controller._CONNECTED;
-			Controller.addController(controller);
+			CurrentConfiguration.controller=new Controller(currentConfiguration);
+			CurrentConfiguration.controller.state=Controller._CONNECTED;
+			Controller.addController(CurrentConfiguration.controller);
 			
 			
 			

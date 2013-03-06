@@ -22,6 +22,7 @@ import com.pumkin.sshcontroller.constants.Values;
 import com.pumkin.sshcontroller.display.ControllerDisplay;
 import com.pumkin.sshcontroller.object.Button;
 import com.pumkin.sshcontroller.object.Controller;
+import com.pumkin.sshcontroller.object.CurrentConfiguration;
 import com.pumkin.sshcontroller.utils.SshControllerUtils;
 
 public class EditButtonDesignActivity extends SshControllerActivity implements
@@ -60,7 +61,7 @@ public class EditButtonDesignActivity extends SshControllerActivity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_button_design);
 
-		button = controller.getButtonByUuid(getIntent().getExtras().get("uuid")
+		button = CurrentConfiguration.controller.getButtonByUuid(getIntent().getExtras().get("uuid")
 				.toString());
 		colorsList = (LinearLayout) findViewById(R.id.colorsList);
 		colorsListPushed = (LinearLayout) findViewById(R.id.colorsListPushed);

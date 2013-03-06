@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 
 import com.pumkin.sshcontroller.display.ControllerDisplay;
 import com.pumkin.sshcontroller.object.Button;
+import com.pumkin.sshcontroller.object.CurrentConfiguration;
 import com.pumkin.sshcontroller.ssh.SshClient;
 
 
@@ -25,7 +26,9 @@ public class ControllerActivity extends SshControllerActivity implements OnClick
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_controller);
 		relativeLayout=(RelativeLayout) findViewById(R.id.activityControllerRelativeLayout);
-		if (controller.buttons.size() == 0) {
+		 
+		//TODO COULD THROW A NULL POINTER EXCEPTION
+		if (CurrentConfiguration.controller.buttons.size() == 0) {
 			// We switch to the edit controller as there is no button
 			enableEditMode(null);
 		}
@@ -36,8 +39,8 @@ public class ControllerActivity extends SshControllerActivity implements OnClick
 	protected void onResume() {
 		super.onResume();
 		backIfNotConnected();
-		Log.i(this.getClass().getName(), "nb buttons: "+controller.buttons.size());
-		ControllerDisplay.resetLayout(this, relativeLayout, controller, this,
+		Log.i(this.getClass().getName(), "nb buttons: "+CurrentConfiguration.controller.buttons.size());
+		ControllerDisplay.resetLayout(this, relativeLayout, CurrentConfiguration.controller, this,
 				null, null);
 	}
 
@@ -64,7 +67,7 @@ public class ControllerActivity extends SshControllerActivity implements OnClick
 	//TODO REPLACE WITH ONTOUCH TO SEND THE POSITION + REPEAT ACTION
 	@Override
 	public void onClick(final View view) {
-		final Button button=controller.getButtonByUuid(view.getTag().toString());
+		final Button button=CurrentConfiguration.controller.getButtonByUuid(view.getTag().toString());
 		final Thread t=new Thread(){
 			@Override
 			public void run(){
@@ -87,7 +90,7 @@ public class ControllerActivity extends SshControllerActivity implements OnClick
 		
 		if(button.onPress.confirmation){
 			AlertDialog deleteAlert = new AlertDialog.Builder(
-					SshControllerActivity.instance).create();
+					CurrentConfiguration.instance).create();
 			deleteAlert.setTitle(getString(R.string.titleuseaction));
 			deleteAlert.setMessage(getString(R.string.labeluseaction));
 			deleteAlert.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.yes),new android.content.DialogInterface.OnClickListener() {

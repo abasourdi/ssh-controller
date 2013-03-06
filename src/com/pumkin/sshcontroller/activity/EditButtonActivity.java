@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.pumkin.sshcontroller.object.Button;
+import com.pumkin.sshcontroller.object.CurrentConfiguration;
 
 public class EditButtonActivity extends SshControllerActivity {
 
@@ -15,7 +16,7 @@ public class EditButtonActivity extends SshControllerActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_button);
-		button=controller.getButtonByUuid(getIntent().getExtras().get("uuid").toString());
+		button=CurrentConfiguration.controller.getButtonByUuid(getIntent().getExtras().get("uuid").toString());
 	}
 
 	@Override
@@ -55,7 +56,7 @@ public class EditButtonActivity extends SshControllerActivity {
 	
 	public void deleteButton(View v) {
 		Log.d(this.getClass().toString(), "deleteButton for uuid "+button.uuid);
-		controller.deleteButtonByUuid(button.uuid);
+		CurrentConfiguration.controller.deleteButtonByUuid(button.uuid);
 		onBackPressed();
 	}
 }

@@ -42,7 +42,7 @@ public class Controller implements Serializable {
 
 	public static void loadControllers() {
 		try {
-			FileInputStream fis = SshControllerActivity.instance
+			FileInputStream fis = CurrentConfiguration.instance
 					.getApplicationContext().openFileInput(filename);
 			ObjectInputStream is = new ObjectInputStream(fis);
 			controllers = (ArrayList<Controller>) is.readObject();
@@ -63,8 +63,8 @@ public class Controller implements Serializable {
 
 	public static void saveControllers() {
 		try {
-			Log.i("toto", "teat: " + SshControllerActivity.instance);
-			FileOutputStream fos = SshControllerActivity.instance
+			Log.i("toto", "teat: " + CurrentConfiguration.instance);
+			FileOutputStream fos = CurrentConfiguration.instance
 					.getApplicationContext().openFileOutput(filename,
 							Context.MODE_PRIVATE);
 			ObjectOutputStream os = new ObjectOutputStream(fos);
