@@ -17,7 +17,7 @@
     <TextView
         android:id="@+id/fileName"
         android:text="filename"
-        android:textSize="30dp"
+        android:textSize="20dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"

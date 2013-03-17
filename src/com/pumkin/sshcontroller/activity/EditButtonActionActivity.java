@@ -122,6 +122,8 @@ public class EditButtonActionActivity extends SshControllerActivity implements
 			action.setText(button.onPress.command);
 		}
 
+		/*
+		 * never any repeat action now
 		if (button.onPress.confirmation) {
 			repeatedActionCheckBoxLinearLayout.setVisibility(View.GONE);
 			repeatedActionEditBoxLinearLayout.setVisibility(View.GONE);
@@ -133,6 +135,7 @@ public class EditButtonActionActivity extends SshControllerActivity implements
 				repeatedActionEditBoxLinearLayout.setVisibility(View.GONE);
 			}
 		}
+		*/
 
 	}
 

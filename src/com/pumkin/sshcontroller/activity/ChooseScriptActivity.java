@@ -83,16 +83,18 @@ public class ChooseScriptActivity extends SshControllerActivity implements OnIte
 		Thread t=new Thread(){
 			@Override
 			public void run(){
-				if(newPath==null){
-					currentPath=getCurrentClient().getCurrentPath();
-				}else{
-					currentPath=newPath;
-				}
-				SshClient currentClient=getCurrentClient();
+				SshClient currentClient = getCurrentClient();
 				if(currentClient!=null){
-					sshFiles=currentClient.ls(currentPath);
+					if(newPath==null){
+						currentPath=getCurrentClient().getCurrentPath();
+					}else{
+						currentPath=newPath;
+					}
+					if(currentClient!=null){
+						sshFiles=currentClient.ls(currentPath);
+					}
+					SshControllerUtils.sendBroadcast(Action._REFRESHSSH);
 				}
-				SshControllerUtils.sendBroadcast(Action._REFRESHSSH);
 			}
 		};
 		t.start();

@@ -16,8 +16,8 @@ public class GlobalConfiguration implements Serializable {
 	private static GlobalConfiguration instance = null;
 
 	private boolean autoConnectEnabled = true;
-	private boolean lockScreenEnabled = true;
-	private boolean lookForHiddenFilesEnabled = true;
+	private boolean lockScreenEnabled = false;
+	private boolean lookForHiddenFilesEnabled = false;
 
 	private static GlobalConfiguration getInstance() {
 		if (instance == null) {

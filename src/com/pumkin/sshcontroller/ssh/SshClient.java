@@ -95,6 +95,7 @@ public class SshClient {
 		// // command = "ls -lrth '" + path + "'| tr -s ' ' | cut -d' ' -f1,9";
 		// command = "ls -l '" + path + "'";
 		// }
+		Log.e("test", "TZEAPODKZA "+GlobalConfiguration.islookForHiddenFilesEnabled());
 		if(GlobalConfiguration.islookForHiddenFilesEnabled()){
 			command = "ls -la '" + path + "'";
 		}else{
@@ -111,7 +112,7 @@ public class SshClient {
 			String rights = list[0];
 			int j = 8;
 			for (int k = 0; k < j; k++) {
-				// We use that to remove the empty space (ie 1 space after 1
+				// We use that to remove the empty space (ie 1 space after 1 other)
 				// other)
 				if (list[k].equals("")) {
 					j++;
@@ -122,7 +123,10 @@ public class SshClient {
 			for (; j < list.length; j++) {
 				name += " " + list[j];
 			}
-			res.add(new SshFile(rights, name, path));
+			//We do this verification to remove . and ..
+			if(!name.equals(".") && !name.equals("..")){
+				res.add(new SshFile(rights, name, path));
+			}
 		}
 		return SshFile.sort(res, path);
 	}

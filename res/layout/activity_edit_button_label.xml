@@ -13,12 +13,10 @@
         android:onClick="changeTemplate"
         android:orientation="horizontal" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:gravity="center_vertical"
-            android:minWidth="40dp"
-            android:text="@string/current_button" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
         <Button
             android:id="@+id/template_button"
@@ -26,6 +24,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
     </LinearLayout>
 
     <ScrollView
@@ -38,61 +41,55 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            
-
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="100dp"
-                android:orientation="horizontal">
+                android:layout_margin="15dp"
+                android:orientation="horizontal" >
 
                 <TextView
                     android:id="@+id/textViewLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
-                    android:minWidth="40dp"
+                    android:minWidth="100dp"
                     android:text="@string/label" />
 
                 <EditText
                     android:id="@+id/EditTextLabel"
+                    android:layout_weight="1"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_toRightOf="@+id/textViewLabel" />
-            </RelativeLayout>
-            
-            
-            <RelativeLayout
+                    android:layout_height="fill_parent"
+                    android:windowSoftInputMode="stateHidden"  />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="100dp"
-                android:orientation="horizontal">
+                android:layout_margin="15dp"
+                android:orientation="horizontal" >
 
                 <TextView
                     android:id="@+id/textViewLabelSize"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
-                    android:minWidth="40dp"
+                    android:minWidth="100dp"
                     android:text="size: 15dp" />
 
                 <SeekBar
                     android:id="@+id/seekBarLabelSize"
+                    android:layout_weight="1"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_toRightOf="@+id/textViewLabelSize" />
-            </RelativeLayout>
-            
-            
+                    android:layout_height="fill_parent" />
+            </LinearLayout>
 
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="100dp"
-                android:orientation="horizontal" 
-                android:visibility="gone">
+                android:orientation="horizontal"
+                android:visibility="gone" >
 
                 <TextView
                     android:id="@+id/textViewAngle"
@@ -109,7 +106,6 @@
                     android:layout_alignParentRight="true"
                     android:layout_toRightOf="@+id/textViewAngle" />
             </RelativeLayout>
-            
         </LinearLayout>
     </ScrollView>
 

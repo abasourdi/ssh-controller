@@ -70,22 +70,22 @@ public class EditButtonDesignActivity extends SshControllerActivity implements
 
 		textViewWidth = (TextView) findViewById(R.id.textViewWidth);
 		seekBarWidth = (SeekBar) findViewById(R.id.seekBarWidth);
-		seekBarWidth.setMax(Values.possibleWidths.length);
+		seekBarWidth.setMax(Values.possibleWidths.length-1);
 		seekBarWidth.setOnSeekBarChangeListener(this);
 		textViewHeight = (TextView) findViewById(R.id.textViewHeight);
 		seekBarHeight = (SeekBar) findViewById(R.id.seekBarHeight);
-		seekBarHeight.setMax(Values.possibleHeights.length);
+		seekBarHeight.setMax(Values.possibleHeights.length-1);
 		seekBarHeight.setOnSeekBarChangeListener(this);
 
 		textViewStroke = (TextView) findViewById(R.id.textViewStroke);
 		seekBarStroke = (SeekBar) findViewById(R.id.seekBarStroke);
-		seekBarStroke.setMax(Values.possibleCornerRadius.length);
+		seekBarStroke.setMax(Values.possibleCornerRadius.length-1);
 		seekBarStroke.setOnSeekBarChangeListener(this);
 		relativeLayoutStroke = (RelativeLayout) findViewById(R.id.relativeLayoutStroke);
 
 		textViewBorder = (TextView) findViewById(R.id.textViewBorder);
 		seekBarBorder = (SeekBar) findViewById(R.id.seekBarBorder);
-		seekBarBorder.setMax(Values.possibleBorder.length);
+		seekBarBorder.setMax(Values.possibleBorder.length-1);
 		seekBarBorder.setOnSeekBarChangeListener(this);
 
 		shapeSpinner = (Spinner) findViewById(R.id.shapeSpinner);

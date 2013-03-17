@@ -52,6 +52,7 @@
     <string name="colors_normal">start colors:</string>
     <string name="colors_pressed">pressed colors:</string>
     <string name="add_new_color">add new color</string>
+    <string name="select_template">select template</string>
     <string name="shape">shape:</string>
     <string name="rectangle">rectangle</string>
     <string name="oval">oval</string>
@@ -68,14 +69,14 @@
     <string name="stroke">stroke: %1$ddp</string>
 
     <!-- Edit button action -->
-    <string name="action">Action</string>
+    <string name="action">Action:</string>
     <string name="noActionDefined">No action defined, click here</string>
     <string name="sendCoordinate">Send coordinate</string>
     <string name="enableRepeatedAction">Enable repeated action</string>
     <string name="repeataction">Every </string>
     <string name="milliseconds">milliseconds</string>
     <string name="stateaction">State action</string>
-    <string name="askforconfirmation">confirmation</string>
+    <string name="askforconfirmation">Confirmation:</string>
     
     
     <!-- Edit button action -->
@@ -89,8 +90,8 @@
 
     <!-- Global Configuration -->
     <string name="auto_connect_to_controller">Auto connect to first available controller</string>
-    <string name="look_for_hidden_files">look for hidden files</string>
-    <string name="lock_screen">lock screen while using a controller</string>
+    <string name="look_for_hidden_files">Look for hidden files</string>
+    <string name="lock_screen">Lock the screen</string>
 
     <!-- Use Action -->
     <string name="titleuseaction">Using action</string>

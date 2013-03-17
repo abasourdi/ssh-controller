@@ -42,6 +42,7 @@ public class ControllerActivity extends SshControllerActivity implements OnClick
 		Log.i(this.getClass().getName(), "nb buttons: "+CurrentConfiguration.controller.buttons.size());
 		ControllerDisplay.resetLayout(this, relativeLayout, CurrentConfiguration.controller, this,
 				null, null);
+		MainActivity.autoChoose=false;
 	}
 
 	@Override

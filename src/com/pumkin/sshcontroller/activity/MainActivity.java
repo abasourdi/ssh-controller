@@ -29,8 +29,8 @@ public class MainActivity extends SshControllerActivity implements
 	private ControllerAdapter controllerAdapter;
 	private ListView controllerList;
 
-	
-	
+	static boolean autoChoose = true;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -53,6 +53,7 @@ public class MainActivity extends SshControllerActivity implements
 	protected void onResume() {
 		super.onResume();
 		Log.i(this.getClass().getName(), "calling onResume");
+		startControllerAutomatically();
 		controllerAdapter.notifyDataSetChanged();
 	}
 
@@ -65,6 +66,7 @@ public class MainActivity extends SshControllerActivity implements
 
 	/**
 	 * start the AddControllerActivity
+	 * 
 	 * @param v
 	 */
 	public void addController(View v) {
@@ -106,7 +108,7 @@ public class MainActivity extends SshControllerActivity implements
 	 */
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View v, int position, long id) {
-		if (true) {
+		if (Controller.controllers.get(position).state == Controller._CONNECTED) {
 			CurrentConfiguration.controller = Controller.controllers
 					.get(position);
 			startControllerActivity();
@@ -229,7 +231,7 @@ public class MainActivity extends SshControllerActivity implements
 	 * 
 	 */
 	private void startControllerAutomatically() {
-		if (GlobalConfiguration.isAutoConnectEnabled()) {
+		if (GlobalConfiguration.isAutoConnectEnabled() && autoChoose) {
 			// Then, if there is a status = true, we connect to it
 			for (int i = 0; i < Controller.controllers.size(); i++) {
 				if (Controller.controllers.get(i).state == Controller._CONNECTED) {

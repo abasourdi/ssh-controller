@@ -49,14 +49,14 @@ public class EditButtonLabelActivity extends SshControllerActivity implements
 		textViewAngle.setText(getString(R.string.angle, button.design.angle));
 
 		seekBarAngle = (SeekBar) findViewById(R.id.seekBarAngle);
-		seekBarAngle.setMax(Values.possibleAngle.length);
+		seekBarAngle.setMax(Values.possibleAngle.length-1);
 		seekBarAngle.setOnSeekBarChangeListener(this);
 
 		textViewLabelSize = (TextView) findViewById(R.id.textViewLabelSize);
 		textViewLabelSize.setText(getString(R.string.labelSize,
 				button.labelSizeSp));
 		seekBarLabelSize = (SeekBar) findViewById(R.id.seekBarLabelSize);
-		seekBarLabelSize.setMax(Values.possibleLabelSize.length);
+		seekBarLabelSize.setMax(Values.possibleLabelSize.length-1);
 		seekBarLabelSize.setOnSeekBarChangeListener(this);
 
 		label = (EditText) findViewById(R.id.EditTextLabel);

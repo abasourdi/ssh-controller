@@ -12,6 +12,7 @@ import android.util.Log;
 import com.pumkin.sshcontroller.constants.Action;
 import com.pumkin.sshcontroller.object.Controller;
 import com.pumkin.sshcontroller.object.CurrentConfiguration;
+import com.pumkin.sshcontroller.object.GlobalConfiguration;
 import com.pumkin.sshcontroller.ssh.SshClient;
 
 public abstract class SshControllerActivity extends Activity { 
@@ -66,9 +67,12 @@ public abstract class SshControllerActivity extends Activity {
 			Controller.loadControllers();
 		}
 		
-		PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-		if(wakeLock==null)
-			wakeLock = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, "tag");
+		if(GlobalConfiguration.isLockScreenEnabled()){
+			PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+			if(wakeLock==null){
+				wakeLock = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, "tag");
+			}
+		}
 	}
 	  @Override
 	    protected void onResume() {
@@ -87,8 +91,9 @@ public abstract class SshControllerActivity extends Activity {
 	        this.registerReceiver(mReceiver, new IntentFilter(Action._REFRESHCONTROLLER));
 	        this.registerReceiver(mReceiver, new IntentFilter(Action._REFRESHSSH));
 	        this.registerReceiver(mReceiver, new IntentFilter(Action._NOTCONNECTED));
-
-			wakeLock.acquire();
+	        if(wakeLock!=null){
+	        	wakeLock.acquire();
+	        }
 	    }
 	    @Override
 	    protected void onPause() {
@@ -97,8 +102,9 @@ public abstract class SshControllerActivity extends Activity {
 	        //unregister our receiver
 	        this.unregisterReceiver(this.mReceiver);
 	        
-
-			wakeLock.release();
+	        if(wakeLock!=null){
+	        	wakeLock.release();
+	        }
 	    }
 	    
 	    public void onAction(Intent intent){

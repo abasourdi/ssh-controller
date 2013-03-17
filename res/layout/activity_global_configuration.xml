@@ -28,7 +28,7 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:minWidth="40dp"
-                    android:text="@string/enableRepeatedAction" />
+                    android:text="@string/auto_connect_to_controller" />
 
                 <CheckBox
                     android:id="@+id/autoConnectCheckBox"
@@ -68,7 +68,7 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:minWidth="40dp"
-                    android:text="@string/lock_screen" />
+                    android:text="@string/look_for_hidden_files" />
 
                 <CheckBox
                     android:id="@+id/lookForHiddenFilesCheckBox"
