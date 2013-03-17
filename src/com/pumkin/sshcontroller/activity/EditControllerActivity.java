@@ -21,9 +21,10 @@ import com.pumkin.sshcontroller.object.Button;
 import com.pumkin.sshcontroller.object.Controller;
 import com.pumkin.sshcontroller.object.CurrentConfiguration;
 import com.pumkin.sshcontroller.object.Design;
+import com.pumkin.sshcontroller.object.SshConfiguration;
 
-public class EditControllerActivity extends SshControllerActivity implements
-		OnClickListener, OnLongClickListener, OnTouchListener {
+public class EditControllerActivity extends SshActiveControllerActivity
+		implements OnClickListener, OnLongClickListener, OnTouchListener {
 
 	View currentVisibleView = null;
 	RelativeLayout relativeLayout;
@@ -38,15 +39,16 @@ public class EditControllerActivity extends SshControllerActivity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_controller);
 		relativeLayout = (RelativeLayout) findViewById(R.id.controller_layout);
-		Log.i(this.getClass().getName(),
-				"nb buttons: " + CurrentConfiguration.controller.buttons.size());
+		Log.i(this.getClass().getName(), "nb buttons: "
+				+ CurrentConfiguration.controller.buttons.size());
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
-		ControllerDisplay.resetLayout(this, relativeLayout, CurrentConfiguration.controller, this,
-				this, this);
+		if (CurrentConfiguration.controller != null)
+			ControllerDisplay.resetLayout(this, relativeLayout,
+					CurrentConfiguration.controller, this, this, this);
 	}
 
 	@Override
@@ -69,14 +71,14 @@ public class EditControllerActivity extends SshControllerActivity implements
 	}
 
 	public void addNewButton(MenuItem menuItem) {
-		//Launch the activity choose design
+		// Launch the activity choose design
 		Intent startNewActivityOpen = new Intent(EditControllerActivity.this,
 				ChooseTemplateActivity.class);
 		startActivityForResult(startNewActivityOpen, 0);
 		overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 	}
 
-		public void quitEditMode(MenuItem menuItem) {
+	public void quitEditMode(MenuItem menuItem) {
 		hideCurrentVisibleView();
 		onBackPressed();
 	}
@@ -128,8 +130,8 @@ public class EditControllerActivity extends SshControllerActivity implements
 
 		CurrentConfiguration.controller.addButton(tmpButton);
 		Controller.saveControllers();
-		ControllerDisplay.resetLayout(this, relativeLayout, CurrentConfiguration.controller, this,
-				this, this);
+		ControllerDisplay.resetLayout(this, relativeLayout,
+				CurrentConfiguration.controller, this, this, this);
 	}
 
 	@Override
@@ -180,8 +182,9 @@ public class EditControllerActivity extends SshControllerActivity implements
 				;
 				int y = (int) (view.getTop() + event.getY()) + initialPosY;
 				;
-				ControllerDisplay.moveButton(this, relativeLayout, CurrentConfiguration.controller,
-						uuid, x - initialPosX, y - initialPosY);
+				ControllerDisplay.moveButton(this, relativeLayout,
+						CurrentConfiguration.controller, uuid, x - initialPosX,
+						y - initialPosY);
 			}
 			break;
 		}

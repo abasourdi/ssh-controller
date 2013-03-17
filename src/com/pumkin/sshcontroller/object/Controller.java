@@ -50,7 +50,7 @@ public class Controller implements Serializable {
 			for (int i = 0; i < controllers.size(); i++) {
 				controllers.get(i).state = _UNKNOWN;
 			}
-			refreshControllers();
+			SshControllerActivity.refreshControllers();
 		} catch (Exception e) {
 			Log.e(Controller.class.toString(), "couldn't load controllers");
 			controllers = new ArrayList<Controller>();
@@ -63,7 +63,6 @@ public class Controller implements Serializable {
 
 	public static void saveControllers() {
 		try {
-			Log.i("toto", "teat: " + CurrentConfiguration.instance);
 			FileOutputStream fos = CurrentConfiguration.instance
 					.getApplicationContext().openFileOutput(filename,
 							Context.MODE_PRIVATE);
@@ -103,24 +102,5 @@ public class Controller implements Serializable {
 		}
 		controllers.add(newController);
 		saveControllers();
-	}
-
-	public static void refreshControllers() {
-		new Thread() {
-			public void run() {
-				for (int i = 0; i < controllers.size(); i++) {
-					if (controllers.get(i).sshConfiguration.testConfiguration()) {
-						controllers.get(i).state = _CONNECTED;
-						Log.i(ControllerAdapter.class.getName(),
-								"setting status to connected");
-					} else {
-						controllers.get(i).state = _DISCONNECTED;
-						Log.i(ControllerAdapter.class.getName(),
-								"setting status to disconnected");
-					}
-					SshControllerUtils.sendBroadcast(Action._REFRESHCONTROLLER);
-				}
-			}
-		}.start();
 	}
 }

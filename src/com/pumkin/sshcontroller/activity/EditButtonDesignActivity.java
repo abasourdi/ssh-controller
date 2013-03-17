@@ -25,7 +25,7 @@ import com.pumkin.sshcontroller.object.Controller;
 import com.pumkin.sshcontroller.object.CurrentConfiguration;
 import com.pumkin.sshcontroller.utils.SshControllerUtils;
 
-public class EditButtonDesignActivity extends SshControllerActivity implements
+public class EditButtonDesignActivity extends SshActiveControllerActivity implements
 		OnSeekBarChangeListener, OnItemSelectedListener {
 
 	Button button;

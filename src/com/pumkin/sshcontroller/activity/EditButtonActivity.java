@@ -8,7 +8,7 @@ import android.view.View;
 import com.pumkin.sshcontroller.object.Button;
 import com.pumkin.sshcontroller.object.CurrentConfiguration;
 
-public class EditButtonActivity extends SshControllerActivity {
+public class EditButtonActivity extends SshActiveControllerActivity {
 
 	Button button;
 	

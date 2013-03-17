@@ -95,7 +95,6 @@ public class SshClient {
 		// // command = "ls -lrth '" + path + "'| tr -s ' ' | cut -d' ' -f1,9";
 		// command = "ls -l '" + path + "'";
 		// }
-		Log.e("test", "TZEAPODKZA "+GlobalConfiguration.islookForHiddenFilesEnabled());
 		if(GlobalConfiguration.islookForHiddenFilesEnabled()){
 			command = "ls -la '" + path + "'";
 		}else{

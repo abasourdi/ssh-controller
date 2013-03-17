@@ -21,7 +21,7 @@ import com.pumkin.sshcontroller.object.SshFile;
 import com.pumkin.sshcontroller.ssh.SshClient;
 import com.pumkin.sshcontroller.utils.SshControllerUtils;
 
-public class ChooseScriptActivity extends SshControllerActivity implements OnItemClickListener{
+public class ChooseScriptActivity extends SshActiveControllerActivity implements OnItemClickListener{
 
 	Button button;
 	

@@ -17,7 +17,7 @@ import com.pumkin.sshcontroller.object.Button;
 import com.pumkin.sshcontroller.object.Controller;
 import com.pumkin.sshcontroller.object.CurrentConfiguration;
 
-public class EditButtonActionActivity extends SshControllerActivity implements
+public class EditButtonActionActivity extends SshActiveControllerActivity implements
 		TextWatcher {
 
 	Button button;

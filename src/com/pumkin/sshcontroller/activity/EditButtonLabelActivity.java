@@ -20,7 +20,7 @@ import com.pumkin.sshcontroller.object.Controller;
 import com.pumkin.sshcontroller.object.CurrentConfiguration;
 import com.pumkin.sshcontroller.utils.SshControllerUtils;
 
-public class EditButtonLabelActivity extends SshControllerActivity implements
+public class EditButtonLabelActivity extends SshActiveControllerActivity implements
 		OnSeekBarChangeListener, TextWatcher {
 
 	Button button;

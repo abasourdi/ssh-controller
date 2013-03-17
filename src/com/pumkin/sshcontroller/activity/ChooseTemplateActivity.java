@@ -13,7 +13,7 @@ import com.pumkin.sshcontroller.object.Controller;
 import com.pumkin.sshcontroller.object.CurrentConfiguration;
 import com.pumkin.sshcontroller.object.Design;
 
-public class ChooseTemplateActivity extends SshControllerActivity implements
+public class ChooseTemplateActivity extends SshActiveControllerActivity implements
 		OnItemClickListener {
 
 	Button button;
