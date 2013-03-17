@@ -90,10 +90,8 @@ public class ChooseScriptActivity extends SshControllerActivity implements OnIte
 				}
 				SshClient currentClient=getCurrentClient();
 				if(currentClient!=null){
-					Log.e("totot", "currentPath: "+currentPath);
 					sshFiles=currentClient.ls(currentPath);
 				}
-				Log.e("TATATA", "files size: "+sshFiles.size());
 				SshControllerUtils.sendBroadcast(Action._REFRESHSSH);
 			}
 		};

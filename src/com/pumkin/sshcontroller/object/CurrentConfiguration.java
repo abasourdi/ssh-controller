@@ -13,5 +13,4 @@ public class CurrentConfiguration {
 
 	public static SshControllerActivity instance=null;
 	public static Controller controller;
-	public static SshClient currentSshClient=null;
 }

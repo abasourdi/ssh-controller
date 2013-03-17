@@ -87,6 +87,11 @@
     <string name="selecttemplate">Select template</string>
     <string name="selectcoloronly">Select color only</string>
 
+    <!-- Global Configuration -->
+    <string name="auto_connect_to_controller">Auto connect to first available controller</string>
+    <string name="look_for_hidden_files">look for hidden files</string>
+    <string name="lock_screen">lock screen while using a controller</string>
+
     <!-- Use Action -->
     <string name="titleuseaction">Using action</string>
     <string name="labeluseaction">are you sure you want to execute this action</string>

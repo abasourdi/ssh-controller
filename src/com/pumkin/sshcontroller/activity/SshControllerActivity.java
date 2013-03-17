@@ -32,15 +32,11 @@ public abstract class SshControllerActivity extends Activity {
 	}
 	
 	public boolean isConnected(){
-		getCurrentClient();
-		if(CurrentConfiguration.currentSshClient==null){
+		SshClient sshClient = getCurrentClient();
+		if(sshClient==null){
 			return false;
-		}else if(CurrentConfiguration.currentSshClient.isConnected()){
-			return true;
 		}else{
-			//Try to connect the client
-			CurrentConfiguration.currentSshClient.connect();
-			return CurrentConfiguration.currentSshClient.isConnected();
+			return sshClient.isConnected();
 		}
 	}
 	
@@ -48,23 +44,10 @@ public abstract class SshControllerActivity extends Activity {
 		if(CurrentConfiguration.controller==null){
 			return null;
 		}
-		if(CurrentConfiguration.currentSshClient==null){
-			CurrentConfiguration.currentSshClient=new SshClient(CurrentConfiguration.controller.sshConfiguration);
-		}
-		if(!CurrentConfiguration.currentSshClient.isConnected()){
-			CurrentConfiguration.currentSshClient.connect();
-			if(!CurrentConfiguration.currentSshClient.isConnected()){
-				//Unable to connect
-				return null;
-			}
-		}
-		return CurrentConfiguration.currentSshClient;
-	}
-	
-	public void reinitializeSshClient(){
-		if(CurrentConfiguration.controller!=null){
-			CurrentConfiguration.currentSshClient=new SshClient(CurrentConfiguration.controller.sshConfiguration);
-			CurrentConfiguration.currentSshClient.connect();
+		if(CurrentConfiguration.controller.sshConfiguration.getSshClient().isConnected()){
+			return CurrentConfiguration.controller.sshConfiguration.getSshClient();
+		}else{
+			return null;
 		}
 	}
 	

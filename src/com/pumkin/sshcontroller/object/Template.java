@@ -46,6 +46,9 @@ public class Template {
 		int topYellow= Color.parseColor("#98983b");
 		int bottomYellow = Color.parseColor("#c3c38d");
 
+		int topPink= Color.parseColor("#ee3A8C");
+		int bottomPink = Color.parseColor("#cd3278");
+
 		int border = Color.parseColor("#f7f7f7");
 
 		int[] colorsBlue = { topBlue, bottomBlue };
@@ -106,6 +109,21 @@ public class Template {
 		design=design.clone();
 		design.shape=GradientDrawable.RECTANGLE;
 		template = new Template("Red rectangle button", design);
+		res.add(template);
+		
+		int[] colorsPink = { topPink, bottomPink };
+		int[] pressedColorsPink = { bottomPink, topPink };
+		
+		design = new Design(colorsPink, pressedColorsPink,
+				GradientDrawable.OVAL, border, 2, 20, Values.defaultWidth,
+				Values.defaultHeight, defaultAngle);
+
+		template = new Template("Pink oval button", design);
+		res.add(template);
+		
+		design=design.clone();
+		design.shape=GradientDrawable.RECTANGLE;
+		template = new Template("Pink rectangle button", design);
 		res.add(template);
 		
 		return res;

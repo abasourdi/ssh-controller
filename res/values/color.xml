@@ -31,11 +31,11 @@
 
 
 
-<color name="background">#956a59</color>
-<color name="edit_background">#768d79</color>
+<color name="background">#515151</color>
+<color name="edit_background">#5b5b5b</color>
 <color name="copper">#7e4635</color>
 <color name="rusty_copper">#956a59</color>
-<color name="button_text_color">#2d1f1c</color>
+<color name="button_text_color">#EAEAEA</color>
 <color name="text_color">#2d1f1c</color>
 
 </resources>

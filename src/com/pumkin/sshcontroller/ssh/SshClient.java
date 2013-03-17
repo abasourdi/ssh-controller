@@ -8,6 +8,7 @@ import android.util.Log;
 import com.jcraft.jsch.ChannelExec;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.Session;
+import com.pumkin.sshcontroller.object.GlobalConfiguration;
 import com.pumkin.sshcontroller.object.SshConfiguration;
 import com.pumkin.sshcontroller.object.SshFile;
 
@@ -26,7 +27,7 @@ public class SshClient {
 	}
 
 	public boolean connect() {
-		try {
+		try { 
 			Log.e("toto", "TEST NEW CONNECTE");
 			JSch shell = new JSch();
 			session = shell.getSession(configuration.username,
@@ -94,7 +95,11 @@ public class SshClient {
 		// // command = "ls -lrth '" + path + "'| tr -s ' ' | cut -d' ' -f1,9";
 		// command = "ls -l '" + path + "'";
 		// }
-		command = "ls -l '" + path + "'";
+		if(GlobalConfiguration.islookForHiddenFilesEnabled()){
+			command = "ls -la '" + path + "'";
+		}else{
+			command = "ls -l '" + path + "'";	
+		}
 		/*
 		 * Classic ls command is 1 rights
 		 */

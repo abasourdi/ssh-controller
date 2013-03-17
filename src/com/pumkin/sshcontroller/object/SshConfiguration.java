@@ -8,6 +8,8 @@ public class SshConfiguration implements Serializable{
 
 	public static SshConfiguration current=null;
 	
+	public transient SshClient instance=null;
+	
 	public String host;
 	public String username;
 	public String password;
@@ -25,21 +27,13 @@ public class SshConfiguration implements Serializable{
 	}
 	
 	public boolean testConfiguration(){
-		SshClient client=new SshClient(this);
-		if(client.connect()){
-			client.disconnect();
-			return true;
-		}else{
-			return false;
-		}
+		return getSshClient().connect();
 	}
 	
 	public SshClient getSshClient(){
-		SshClient client=new SshClient(this);
-		if(client.connect()){
-			return client;
-		}else{
-			return null;
+		if(instance == null){
+			instance = new SshClient(this);
 		}
+		return instance;
 	}
 }

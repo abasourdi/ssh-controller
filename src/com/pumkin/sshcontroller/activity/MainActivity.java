@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -20,13 +21,16 @@ import com.pumkin.sshcontroller.adapter.ControllerAdapter;
 import com.pumkin.sshcontroller.constants.Action;
 import com.pumkin.sshcontroller.object.Controller;
 import com.pumkin.sshcontroller.object.CurrentConfiguration;
+import com.pumkin.sshcontroller.object.GlobalConfiguration;
 
 public class MainActivity extends SshControllerActivity implements
 		OnItemClickListener, OnItemLongClickListener {
 
-	ControllerAdapter controllerAdapter;
-	ListView controllerList;
+	private ControllerAdapter controllerAdapter;
+	private ListView controllerList;
 
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -42,6 +46,9 @@ public class MainActivity extends SshControllerActivity implements
 
 	}
 
+	/**
+	 * refresh the list of controllers
+	 */
 	@Override
 	protected void onResume() {
 		super.onResume();
@@ -56,6 +63,10 @@ public class MainActivity extends SshControllerActivity implements
 		return true;
 	}
 
+	/**
+	 * start the AddControllerActivity
+	 * @param v
+	 */
 	public void addController(View v) {
 		Intent startNewActivityOpen = new Intent(MainActivity.this,
 				AddControllerActivity.class);
@@ -63,6 +74,10 @@ public class MainActivity extends SshControllerActivity implements
 		overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 	}
 
+	/**
+	 * This is mostly used to get the size of the screen to be able to get a
+	 * good layout for the buttons on the controller screen
+	 */
 	@Override
 	protected void onPause() {
 		super.onPause();
@@ -70,24 +85,31 @@ public class MainActivity extends SshControllerActivity implements
 		if (CurrentConfiguration.heightInPixel == -1) {
 			RelativeLayout parent = ((RelativeLayout) controllerList
 					.getParent());
-			CurrentConfiguration.heightInPixel=parent.getHeight();
-			CurrentConfiguration.widthInPixel=parent.getWidth();
+			CurrentConfiguration.heightInPixel = parent.getHeight();
+			CurrentConfiguration.widthInPixel = parent.getWidth();
 		}
 	}
 
+	/**
+	 * Start the controller activity.
+	 */
+	private void startControllerActivity() {
+		Intent startNewActivityOpen = new Intent(MainActivity.this,
+				ControllerActivity.class);
+		startActivityForResult(startNewActivityOpen, 0);
+		overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+	}
+
+	/**
+	 * Will start the controller activity with the specified controller if this
+	 * one is enabled
+	 */
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View v, int position, long id) {
-		// If state of the activity is online => launch it, otherwise,
-		// TOCHANGE SO FOR TEST PURPOSE
 		if (true) {
-			// if(controller.state==Controller._CONNECTED){
-			Intent startNewActivityOpen = new Intent(MainActivity.this,
-					ControllerActivity.class);
-
-			CurrentConfiguration.controller = Controller.controllers.get(position);
-
-			startActivityForResult(startNewActivityOpen, 0);
-			overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+			CurrentConfiguration.controller = Controller.controllers
+					.get(position);
+			startControllerActivity();
 		} else {
 			// Display error message
 			Toast.makeText(getApplicationContext(),
@@ -96,7 +118,9 @@ public class MainActivity extends SshControllerActivity implements
 		}
 	}
 
-	// A bit long, but it's only for rename and delete
+	/**
+	 * Method used to rename or delete a controller, to be changed
+	 */
 	@Override
 	public boolean onItemLongClick(AdapterView<?> arg0, View v,
 			final int position, long id) {
@@ -198,17 +222,47 @@ public class MainActivity extends SshControllerActivity implements
 					}
 				});
 		actionAlert.show();
-
 		return true;
 	}
 
+	/**
+	 * 
+	 */
+	private void startControllerAutomatically() {
+		if (GlobalConfiguration.isAutoConnectEnabled()) {
+			// Then, if there is a status = true, we connect to it
+			for (int i = 0; i < Controller.controllers.size(); i++) {
+				if (Controller.controllers.get(i).state == Controller._CONNECTED) {
+					CurrentConfiguration.controller = Controller.controllers
+							.get(i);
+					startControllerActivity();
+				}
+			}
+		}
+	}
+
+	/**
+	 * Method used to refresh the controllers, and eventually auto start the
+	 * first controller found
+	 */
 	@Override
 	public void onAction(Intent intent) {
 		String action = intent.getAction();
-		// log our message value
-		Log.i("getting action:", action);
 		if (Action._REFRESHCONTROLLER.equals(action)) {
+			startControllerAutomatically();
 			controllerAdapter.notifyDataSetChanged();
 		}
+	}
+
+	/**
+	 * Start the global configuration activity
+	 * 
+	 * @param menuItem
+	 */
+	public void globalConfiguration(MenuItem menuItem) {
+		Intent startNewActivityOpen = new Intent(MainActivity.this,
+				GlobalConfigurationActivity.class);
+		startActivityForResult(startNewActivityOpen, 0);
+		overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 	}
 }
