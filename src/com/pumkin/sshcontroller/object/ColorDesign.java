@@ -2,7 +2,9 @@ package com.pumkin.sshcontroller.object;
 
 import java.io.Serializable;
 
-public class Design extends AbstractDesign implements Serializable {
+import android.graphics.Color;
+
+public class ColorDesign extends AbstractDesign implements Serializable {
 
 	/**
 	 * 
@@ -23,7 +25,7 @@ public class Design extends AbstractDesign implements Serializable {
 	 * @param height
 	 *            height, should be something times 30 (except 0)
 	 */
-	public Design(int[] colors, int[] pressedColors, int shape,
+	public ColorDesign(int[] colors, int[] pressedColors, int shape,
 			int borderColor, int borderWidth, int cornerRadius, int width,
 			int height, int angle) {
 		this.colors = colors;
@@ -37,6 +39,11 @@ public class Design extends AbstractDesign implements Serializable {
 		this.angle=angle;
 	}
 
+
+	public String label = "";
+	public int labelSizeSp=15;
+	public int labelColor=Color.BLACK;
+	
 	public int[] colors;
 	public int[] pressedColors;
 	public int shape;
@@ -45,8 +52,8 @@ public class Design extends AbstractDesign implements Serializable {
 	public int cornerRadius;
 	public int angle;
 
-	public Design clone() {
-		return new Design(colors, pressedColors, shape, borderColor,
+	public ColorDesign clone() {
+		return new ColorDesign(colors, pressedColors, shape, borderColor,
 				borderWidth, cornerRadius, width, height, angle);
 	}
 

@@ -14,12 +14,4 @@ public class Action implements Serializable{
 	
 	public boolean repeatedEnabled=false;
 	public int repeatedInterval=50;
-	
-	public String getFullCommand(){
-		String res=command;
-		for(int i=0;i<parameters.size();i++){
-			res+=" "+command;
-		}
-		return res;
-	}
 }

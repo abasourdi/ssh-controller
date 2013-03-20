@@ -11,7 +11,7 @@ import com.pumkin.sshcontroller.adapter.TemplateAdapter;
 import com.pumkin.sshcontroller.object.Button;
 import com.pumkin.sshcontroller.object.Controller;
 import com.pumkin.sshcontroller.object.CurrentConfiguration;
-import com.pumkin.sshcontroller.object.Design;
+import com.pumkin.sshcontroller.object.ColorDesign;
 import com.pumkin.sshcontroller.utils.SshControllerUtils;
 
 public class ChooseTemplateActivity extends SshActiveControllerActivity implements
@@ -52,7 +52,7 @@ public class ChooseTemplateActivity extends SshActiveControllerActivity implemen
 		Log.i(this.getClass().getName(), "calling onItemClick for view: "
 				+ view);
 		// Now, we
-		Design newDesign = templateAdapter.getItem(position).design;
+		ColorDesign newDesign = templateAdapter.getItem(position).design;
 
 		if (button == null) {
 			Button newButton = new Button(newDesign);

@@ -18,7 +18,7 @@ import android.widget.TextView;
 import com.pumkin.sshcontroller.object.Button;
 import com.pumkin.sshcontroller.object.Controller;
 import com.pumkin.sshcontroller.object.CurrentConfiguration;
-import com.pumkin.sshcontroller.object.Design;
+import com.pumkin.sshcontroller.object.ColorDesign;
 import com.pumkin.sshcontroller.utils.SshControllerUtils;
 
 //This class will handle the actions of the controller
@@ -99,13 +99,16 @@ public class ControllerDisplay {
 		for (int i = 0; i < controller.buttons.size(); i++) {
 			Button button = controller.buttons.get(i);
 			TextView displayedButton = new TextView(context);
-			displayedButton.setText(button.label);
-			displayedButton.setTextSize(button.labelSizeSp);
-			displayedButton.setTextColor(button.labelColor);
+			if (button.design.getClass().equals(ColorDesign.class)) {
+				ColorDesign colorDesign=(ColorDesign) button.design;
+				displayedButton.setText(colorDesign.label);
+				displayedButton.setTextSize(colorDesign.labelSizeSp);
+				displayedButton.setTextColor(colorDesign.labelColor);
 
-			displayedButton
-					.setBackgroundDrawable(getStateListDrawableFromDesign(
-							context, button.design));
+				displayedButton
+						.setBackgroundDrawable(getStateListDrawableFromDesign(
+								context, colorDesign));
+			}
 			displayedButton.setMinimumHeight(SshControllerUtils.convertDpToPx(
 					context, button.design.height));
 			displayedButton.setMinimumWidth(SshControllerUtils.convertDpToPx(
@@ -142,7 +145,7 @@ public class ControllerDisplay {
 	}
 
 	public static Drawable getDrawableFromDesign(Context context,
-			Design design, boolean pressed) {
+			ColorDesign design, boolean pressed) {
 
 		GradientDrawable res;
 		if (pressed) {
@@ -166,7 +169,7 @@ public class ControllerDisplay {
 	}
 
 	public static StateListDrawable getStateListDrawableFromDesign(
-			Context context, Design design) {
+			Context context, ColorDesign design) {
 		StateListDrawable res = new StateListDrawable();
 		res.addState(new int[] { android.R.attr.state_pressed },
 				getDrawableFromDesign(context, design, true));

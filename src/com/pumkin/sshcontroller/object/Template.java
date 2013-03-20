@@ -10,9 +10,9 @@ import android.graphics.drawable.GradientDrawable;
 public class Template {
 
 	public String name;
-	public Design design;
+	public ColorDesign design;
 
-	public Template(String name, Design design) {
+	public Template(String name, ColorDesign design) {
 		this.name = name;
 		this.design = design;
 	}
@@ -21,7 +21,7 @@ public class Template {
 			int borderColor, int borderWidth, int cornerRadius, int width,
 			int height, int angle) {
 		this.name = name;
-		this.design = new Design(colors, pressedColors, shape, borderColor,
+		this.design = new ColorDesign(colors, pressedColors, shape, borderColor,
 				borderWidth, cornerRadius, width, height, angle);
 	}
 
@@ -54,7 +54,7 @@ public class Template {
 		int[] colorsBlue = { topBlue, bottomBlue };
 		int[] pressedColorsBlue = { bottomBlue, topBlue };
 		
-		Design design = new Design(colorsBlue, pressedColorsBlue,
+		ColorDesign design = new ColorDesign(colorsBlue, pressedColorsBlue,
 				GradientDrawable.OVAL, border, 2, 20, Values.defaultWidth,
 				Values.defaultHeight, defaultAngle);
 
@@ -69,7 +69,7 @@ public class Template {
 		int[] colorsGreen = { topGreen, bottomGreen };
 		int[] pressedColorsGreen = { bottomGreen, topGreen };
 		
-		design = new Design(colorsGreen, pressedColorsGreen,
+		design = new ColorDesign(colorsGreen, pressedColorsGreen,
 				GradientDrawable.OVAL, border, 2, 20, Values.defaultWidth,
 				Values.defaultHeight, defaultAngle);
 
@@ -84,7 +84,7 @@ public class Template {
 		int[] colorsYellow = { topYellow, bottomYellow };
 		int[] pressedColorsYellow = { bottomYellow, topYellow };
 		
-		design = new Design(colorsYellow, pressedColorsYellow,
+		design = new ColorDesign(colorsYellow, pressedColorsYellow,
 				GradientDrawable.OVAL, border, 2, 20, Values.defaultWidth,
 				Values.defaultHeight, defaultAngle);
 
@@ -99,7 +99,7 @@ public class Template {
 		int[] colorsRed = { topRed, bottomRed };
 		int[] pressedColorsRed = { bottomRed, topRed };
 		
-		design = new Design(colorsRed, pressedColorsRed,
+		design = new ColorDesign(colorsRed, pressedColorsRed,
 				GradientDrawable.OVAL, border, 2, 20, Values.defaultWidth,
 				Values.defaultHeight, defaultAngle);
 
@@ -114,7 +114,7 @@ public class Template {
 		int[] colorsPink = { topPink, bottomPink };
 		int[] pressedColorsPink = { bottomPink, topPink };
 		
-		design = new Design(colorsPink, pressedColorsPink,
+		design = new ColorDesign(colorsPink, pressedColorsPink,
 				GradientDrawable.OVAL, border, 2, 20, Values.defaultWidth,
 				Values.defaultHeight, defaultAngle);
 

@@ -20,7 +20,7 @@ import com.pumkin.sshcontroller.display.ControllerDisplay;
 import com.pumkin.sshcontroller.object.Button;
 import com.pumkin.sshcontroller.object.Controller;
 import com.pumkin.sshcontroller.object.CurrentConfiguration;
-import com.pumkin.sshcontroller.object.Design;
+import com.pumkin.sshcontroller.object.ColorDesign;
 import com.pumkin.sshcontroller.object.SshConfiguration;
 import com.pumkin.sshcontroller.utils.SshControllerUtils;
 
@@ -119,7 +119,7 @@ public class EditControllerActivity extends SshActiveControllerActivity
 		int[] colors = { Color.BLACK, Color.RED };
 		int[] colorsInversed = { Color.RED, Color.BLACK };
 		// TODO CHANGE THAT
-		Button tmpButton = new Button(new Design(colors, colorsInversed,
+		Button tmpButton = new Button(new ColorDesign(colors, colorsInversed,
 				GradientDrawable.OVAL, Color.GREEN, 2, 15, 90, 90, 15));
 
 		try {
