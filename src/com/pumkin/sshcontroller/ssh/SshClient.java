@@ -32,6 +32,10 @@ public class SshClient {
 			JSch shell = new JSch();
 			session = shell.getSession(configuration.username,
 					configuration.host, configuration.port);
+			
+
+			System.out.println("test: "+configuration.username+", "+configuration.password+", "+configuration.host);
+			
 			MyUserInfo ui = new MyUserInfo();
 			ui.setPassword(configuration.password);
 

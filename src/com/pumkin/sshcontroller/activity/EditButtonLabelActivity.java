@@ -80,7 +80,7 @@ public class EditButtonLabelActivity extends SshActiveControllerActivity impleme
 	}
 
 	public void save() {
-		Controller.saveControllers();
+		SshControllerUtils.saveSshConfigurations();
 	}
 
 	@Override

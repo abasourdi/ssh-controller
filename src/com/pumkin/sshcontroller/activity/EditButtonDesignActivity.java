@@ -120,7 +120,7 @@ public class EditButtonDesignActivity extends SshActiveControllerActivity implem
 
 	public void save() {
 		// button.displayedName=label.getText().toString();
-		Controller.saveControllers();
+		SshControllerUtils.saveSshConfigurations();
 	}
 
 	@Override

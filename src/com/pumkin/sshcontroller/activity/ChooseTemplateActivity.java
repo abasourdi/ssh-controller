@@ -12,6 +12,7 @@ import com.pumkin.sshcontroller.object.Button;
 import com.pumkin.sshcontroller.object.Controller;
 import com.pumkin.sshcontroller.object.CurrentConfiguration;
 import com.pumkin.sshcontroller.object.Design;
+import com.pumkin.sshcontroller.utils.SshControllerUtils;
 
 public class ChooseTemplateActivity extends SshActiveControllerActivity implements
 		OnItemClickListener {
@@ -56,7 +57,7 @@ public class ChooseTemplateActivity extends SshActiveControllerActivity implemen
 		if (button == null) {
 			Button newButton = new Button(newDesign);
 			CurrentConfiguration.controller.addButton(newButton);
-			Controller.saveControllers();
+			SshControllerUtils.saveSshConfigurations();
 		} else {
 			button.design = newDesign;
 		}

@@ -19,9 +19,11 @@ import android.widget.Toast;
 
 import com.pumkin.sshcontroller.adapter.ControllerAdapter;
 import com.pumkin.sshcontroller.constants.Action;
+import com.pumkin.sshcontroller.constants.Constants;
 import com.pumkin.sshcontroller.object.Controller;
 import com.pumkin.sshcontroller.object.CurrentConfiguration;
 import com.pumkin.sshcontroller.object.GlobalConfiguration;
+import com.pumkin.sshcontroller.utils.SshControllerUtils;
 
 public class MainActivity extends SshControllerActivity implements
 		OnItemClickListener, OnItemLongClickListener {
@@ -36,6 +38,8 @@ public class MainActivity extends SshControllerActivity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		CurrentConfiguration.instance=this;
+		
 		controllerList = (ListView) findViewById(R.id.controllerList);
 		controllerAdapter = new ControllerAdapter(this);
 		controllerList.setAdapter(controllerAdapter);
@@ -108,9 +112,8 @@ public class MainActivity extends SshControllerActivity implements
 	 */
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View v, int position, long id) {
-		if (Controller.controllers.get(position).state == Controller._CONNECTED) {
-			CurrentConfiguration.controller = Controller.controllers
-					.get(position);
+		if (SshControllerUtils.getControllers().get(position).parent.state == Constants._SSHCONFIGURATION_CONNECTED) {
+			CurrentConfiguration.controller = SshControllerUtils.getControllers().get(position);
 			startControllerActivity();
 		} else {
 			// Display error message
@@ -134,7 +137,7 @@ public class MainActivity extends SshControllerActivity implements
 		AlertDialog actionAlert = new AlertDialog.Builder(this).create();
 		actionAlert.setTitle(getString(R.string.manage_controller_title));
 		actionAlert.setMessage(getString(R.string.manage_controller_message,
-				Controller.controllers.get(position).name));
+				SshControllerUtils.getControllers().get(position).name));
 		actionAlert.setButton(AlertDialog.BUTTON_POSITIVE,
 				getString(R.string.delete), new OnClickListener() {
 
@@ -146,15 +149,15 @@ public class MainActivity extends SshControllerActivity implements
 								.setTitle(getString(R.string.delete_controller_title));
 						deleteAlert.setMessage(getString(
 								R.string.delete_controller_message,
-								Controller.controllers.get(position).name));
+								SshControllerUtils.getControllers().get(position).name));
 						deleteAlert.setButton(AlertDialog.BUTTON_POSITIVE,
 								getString(R.string.yes), new OnClickListener() {
 
 									@Override
 									public void onClick(DialogInterface arg0,
 											int arg1) {
-										Controller.controllers.remove(position);
-										Controller.saveControllers();
+										SshControllerUtils.deleteController(SshControllerUtils.getControllers().get(position));
+										SshControllerUtils.saveSshConfigurations();
 										((MainActivity) CurrentConfiguration.instance).controllerAdapter
 												.notifyDataSetChanged();
 									}
@@ -183,7 +186,7 @@ public class MainActivity extends SshControllerActivity implements
 								.setTitle(getString(R.string.rename_controller_title));
 						renameAlert.setMessage(getString(
 								R.string.rename_controller_message,
-								Controller.controllers.get(position).name));
+								SshControllerUtils.getControllers().get(position).name));
 
 						final EditText input = new EditText(
 								CurrentConfiguration.instance);
@@ -196,9 +199,9 @@ public class MainActivity extends SshControllerActivity implements
 									@Override
 									public void onClick(DialogInterface arg0,
 											int arg1) {
-										Controller.controllers.get(position).name = input
+										SshControllerUtils.getControllers().get(position).name = input
 												.getText().toString();
-										Controller.saveControllers();
+										SshControllerUtils.saveSshConfigurations();
 										((MainActivity) CurrentConfiguration.instance).controllerAdapter
 												.notifyDataSetChanged();
 									}
@@ -233,10 +236,9 @@ public class MainActivity extends SshControllerActivity implements
 	private void startControllerAutomatically() {
 		if (GlobalConfiguration.isAutoConnectEnabled() && autoChoose) {
 			// Then, if there is a status = true, we connect to it
-			for (int i = 0; i < Controller.controllers.size(); i++) {
-				if (Controller.controllers.get(i).state == Controller._CONNECTED) {
-					CurrentConfiguration.controller = Controller.controllers
-							.get(i);
+			for (int i = 0; i < SshControllerUtils.getControllers().size(); i++) {
+				if (SshControllerUtils.getControllers().get(i).parent.state == Constants._SSHCONFIGURATION_CONNECTED) {
+					CurrentConfiguration.controller = SshControllerUtils.getControllers().get(i);
 					startControllerActivity();
 				}
 			}

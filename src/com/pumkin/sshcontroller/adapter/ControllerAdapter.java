@@ -8,8 +8,10 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.pumkin.sshcontroller.activity.R;
+import com.pumkin.sshcontroller.constants.Constants;
 import com.pumkin.sshcontroller.object.Controller;
 import com.pumkin.sshcontroller.object.CurrentConfiguration;
+import com.pumkin.sshcontroller.utils.SshControllerUtils;
 
 public class ControllerAdapter extends BaseAdapter {
 
@@ -21,12 +23,12 @@ public class ControllerAdapter extends BaseAdapter {
 
 	@Override
 	public int getCount() {
-		return Controller.controllers.size();
+		return SshControllerUtils.getControllers().size();
 	}
 
 	@Override
 	public Controller getItem(int position) {
-		return Controller.controllers.get(position);
+		return SshControllerUtils.getControllers().get(position);
 	}
 
 	@Override
@@ -47,15 +49,15 @@ public class ControllerAdapter extends BaseAdapter {
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-		holder.name.setText(Controller.controllers.get(position).name);
-		switch(Controller.controllers.get(position).state){
-		case Controller._CONNECTED:
+		holder.name.setText(SshControllerUtils.getControllers().get(position).name);
+		switch(SshControllerUtils.getControllers().get(position).parent.state){
+		case Constants._SSHCONFIGURATION_CONNECTED:
 			holder.status.setBackgroundDrawable(CurrentConfiguration.instance.getResources().getDrawable(R.drawable.controller_state_online));
 			break;
-		case Controller._DISCONNECTED:
+		case Constants._SSHCONFIGURATION_DISCONNECTED:
 			holder.status.setBackgroundDrawable(CurrentConfiguration.instance.getResources().getDrawable(R.drawable.controller_state_offline));
 			break;
-		case Controller._UNKNOWN:
+		case Constants._SSHCONFIGURATION_UNKNOWN:
 			holder.status.setBackgroundDrawable(CurrentConfiguration.instance.getResources().getDrawable(R.drawable.controller_state_unknown));
 			break;
 		}

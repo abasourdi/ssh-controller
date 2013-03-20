@@ -22,6 +22,7 @@ import com.pumkin.sshcontroller.object.Controller;
 import com.pumkin.sshcontroller.object.CurrentConfiguration;
 import com.pumkin.sshcontroller.object.Design;
 import com.pumkin.sshcontroller.object.SshConfiguration;
+import com.pumkin.sshcontroller.utils.SshControllerUtils;
 
 public class EditControllerActivity extends SshActiveControllerActivity
 		implements OnClickListener, OnLongClickListener, OnTouchListener {
@@ -129,7 +130,7 @@ public class EditControllerActivity extends SshActiveControllerActivity
 		}
 
 		CurrentConfiguration.controller.addButton(tmpButton);
-		Controller.saveControllers();
+		SshControllerUtils.saveSshConfigurations();
 		ControllerDisplay.resetLayout(this, relativeLayout,
 				CurrentConfiguration.controller, this, this, this);
 	}
@@ -162,7 +163,7 @@ public class EditControllerActivity extends SshActiveControllerActivity
 		switch (event.getAction()) {
 		case MotionEvent.ACTION_UP:
 			isMoving = false;
-			Controller.saveControllers();
+			SshControllerUtils.saveSshConfigurations();
 			break;
 		case MotionEvent.ACTION_DOWN:
 			uuid = view.getTag().toString();

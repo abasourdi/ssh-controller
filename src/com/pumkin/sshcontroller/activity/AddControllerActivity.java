@@ -13,6 +13,7 @@ import com.pumkin.sshcontroller.object.Controller;
 import com.pumkin.sshcontroller.object.CurrentConfiguration;
 import com.pumkin.sshcontroller.object.SshConfiguration;
 import com.pumkin.sshcontroller.ssh.SshConnection;
+import com.pumkin.sshcontroller.utils.SshControllerUtils;
 
 public class AddControllerActivity extends SshControllerActivity {
 
@@ -29,9 +30,6 @@ public class AddControllerActivity extends SshControllerActivity {
 				.toString();
 		String host = ((TextView) findViewById(R.id.host)).getText().toString();
 		
-//		username="aba";
-//		password="password";
-//		host="192.168.0.146";
 		int port;
 		try {
 			port = Integer.parseInt(((TextView) findViewById(R.id.port))
@@ -42,7 +40,6 @@ public class AddControllerActivity extends SshControllerActivity {
 						Toast.LENGTH_LONG).show();
 				return;
 			}
-//			port=22;
 		} catch (Exception e) {
 			// Display port must be a number
 			Log.e(AddControllerActivity.class.toString(),
@@ -97,11 +94,14 @@ public class AddControllerActivity extends SshControllerActivity {
 			cancelProgressDialog();
 			Intent startNewActivityOpen = new Intent(
 					AddControllerActivity.this, ControllerActivity.class);
-			CurrentConfiguration.controller=new Controller(currentConfiguration);
-			CurrentConfiguration.controller.state=Controller._CONNECTED;
-			Controller.addController(CurrentConfiguration.controller);
 			
-			
+			//We create a basic controller
+			Controller controller = new Controller();
+			controller.parent=currentConfiguration;
+			currentConfiguration.controllers.add(controller);
+				
+
+			SshControllerUtils.sshConfigurations.add(currentConfiguration);
 			
 			startActivityForResult(startNewActivityOpen, 0);
 			overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);

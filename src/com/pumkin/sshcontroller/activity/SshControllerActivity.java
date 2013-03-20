@@ -11,6 +11,7 @@ import android.util.Log;
 
 import com.pumkin.sshcontroller.adapter.ControllerAdapter;
 import com.pumkin.sshcontroller.constants.Action;
+import com.pumkin.sshcontroller.constants.Constants;
 import com.pumkin.sshcontroller.object.Controller;
 import com.pumkin.sshcontroller.object.CurrentConfiguration;
 import com.pumkin.sshcontroller.object.GlobalConfiguration;
@@ -41,7 +42,7 @@ public abstract class SshControllerActivity extends Activity {
 							// Then, we check if the current controller is
 							// connected
 							if (CurrentConfiguration.controller != null) {
-								if (CurrentConfiguration.controller.sshConfiguration
+								if (CurrentConfiguration.controller.parent
 										.getSshClient().isConnected()) {
 									// We execute a basic request just to keep
 									// the connection active
@@ -49,7 +50,7 @@ public abstract class SshControllerActivity extends Activity {
 											"Still connected");
 
 									System.out.println("DZADZA AVANT");
-									CurrentConfiguration.controller.sshConfiguration
+									CurrentConfiguration.controller.parent
 											.getSshClient().execute("pwd");
 									System.out.println("DZADZA APRES");
 								} else {
@@ -57,12 +58,13 @@ public abstract class SshControllerActivity extends Activity {
 									// is lost
 									Log.i(SshControllerActivity.class.getName(),
 											"Not connected...");
-									for (int i = 0; i < Controller.controllers
+									
+									for (int i = 0; i < SshControllerUtils.getControllers()
 											.size(); i++) {
-										if (Controller.controllers
+										if (SshControllerUtils.getControllers()
 												.get(i)
 												.equals(CurrentConfiguration.controller)) {
-											Controller.controllers.get(i).state = Controller._DISCONNECTED;
+											SshControllerUtils.getControllers().get(i).parent.state = Constants._SSHCONFIGURATION_DISCONNECTED;
 										}
 									}
 									CurrentConfiguration.controller = null;
@@ -70,8 +72,8 @@ public abstract class SshControllerActivity extends Activity {
 											.sendBroadcast(Action._NOTCONNECTED);
 								}
 							} else {
-								if (Controller.controllers != null
-										&& !isRefresherControllerThreadRunning) {
+								//TODO MAYBE BIG FAILURE HERE
+								if ( !isRefresherControllerThreadRunning) {
 									refreshControllers();
 								}
 							}
@@ -90,18 +92,17 @@ public abstract class SshControllerActivity extends Activity {
 	}
 
 	public static void refreshControllers() {
-		
 		Thread t = new Thread() {
 			public void run() {
 				isRefresherControllerThreadRunning=true;
-				for (int i = 0; i < Controller.controllers.size(); i++) {
-					if (Controller.controllers.get(i).sshConfiguration
+				for (int i = 0; i < SshControllerUtils.getControllers().size(); i++) {
+					if (SshControllerUtils.getControllers().get(i).parent
 							.testConfiguration()) {
-						Controller.controllers.get(i).state = Controller._CONNECTED;
+						SshControllerUtils.getControllers().get(i).parent.state = Constants._SSHCONFIGURATION_CONNECTED;
 						Log.i(ControllerAdapter.class.getName(),
 								"setting status to connected");
 					} else {
-						Controller.controllers.get(i).state = Controller._DISCONNECTED;
+						SshControllerUtils.getControllers().get(i).parent.state = Constants._SSHCONFIGURATION_DISCONNECTED;
 						Log.i(ControllerAdapter.class.getName(),
 								"setting status to disconnected");
 					}
@@ -128,9 +129,9 @@ public abstract class SshControllerActivity extends Activity {
 		if (CurrentConfiguration.controller == null) {
 			return null;
 		}
-		if (CurrentConfiguration.controller.sshConfiguration.getSshClient()
+		if (CurrentConfiguration.controller.parent.getSshClient()
 				.isConnected()) {
-			return CurrentConfiguration.controller.sshConfiguration
+			return CurrentConfiguration.controller.parent
 					.getSshClient();
 		} else {
 			return null;
@@ -147,10 +148,13 @@ public abstract class SshControllerActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		//TODO
+		/*
 		if (Controller.controllers == null) {
 			CurrentConfiguration.instance = this;
 			Controller.loadControllers();
 		}
+		*/
 
 		if (GlobalConfiguration.isLockScreenEnabled()) {
 			PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);

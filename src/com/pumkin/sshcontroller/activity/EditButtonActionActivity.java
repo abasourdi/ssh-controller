@@ -16,6 +16,7 @@ import com.pumkin.sshcontroller.adapter.ColorAdapter;
 import com.pumkin.sshcontroller.object.Button;
 import com.pumkin.sshcontroller.object.Controller;
 import com.pumkin.sshcontroller.object.CurrentConfiguration;
+import com.pumkin.sshcontroller.utils.SshControllerUtils;
 
 public class EditButtonActionActivity extends SshActiveControllerActivity implements
 		TextWatcher {
@@ -83,7 +84,7 @@ public class EditButtonActionActivity extends SshActiveControllerActivity implem
 	}
 
 	public void save() {
-		Controller.saveControllers();
+		SshControllerUtils.saveSshConfigurations();
 	}
 
 	@Override
@@ -160,7 +161,7 @@ public class EditButtonActionActivity extends SshActiveControllerActivity implem
 				repeated.setChecked(false);
 			}
 		}
-		Controller.saveControllers();
+		SshControllerUtils.saveSshConfigurations();
 		refresh();
 	}
 
@@ -168,7 +169,7 @@ public class EditButtonActionActivity extends SshActiveControllerActivity implem
 		Log.d(this.getClass().toString(), "onSendCoordinateChange for uuid "
 				+ button.uuid);
 		button.onPress.sendCoordinate = !button.onPress.sendCoordinate;
-		Controller.saveControllers();
+		SshControllerUtils.saveSshConfigurations();
 		refresh();
 	}
 
@@ -176,7 +177,7 @@ public class EditButtonActionActivity extends SshActiveControllerActivity implem
 		Log.d(this.getClass().toString(), "onRepeatedActionChange for uuid "
 				+ button.uuid);
 		button.onPress.repeatedEnabled = !button.onPress.repeatedEnabled;
-		Controller.saveControllers();
+		SshControllerUtils.saveSshConfigurations();
 		refresh();
 	}
 

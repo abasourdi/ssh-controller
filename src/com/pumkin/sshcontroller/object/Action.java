@@ -7,6 +7,7 @@ public class Action implements Serializable{
 
 	public boolean confirmation=false;
 	public boolean sendCoordinate=false;
+	public boolean listAction=false;
 	
 	public String command="";
 	public ArrayList<String> parameters=new ArrayList<String>();

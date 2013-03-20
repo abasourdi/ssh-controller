@@ -2,7 +2,7 @@ package com.pumkin.sshcontroller.object;
 
 import java.io.Serializable;
 
-public class Design implements Serializable {
+public class Design extends AbstractDesign implements Serializable {
 
 	/**
 	 * 
@@ -43,8 +43,6 @@ public class Design implements Serializable {
 	public int borderColor;
 	public int borderWidth;
 	public int cornerRadius;
-	public int width;
-	public int height;
 	public int angle;
 
 	public Design clone() {

@@ -70,7 +70,7 @@ public class ChooseScriptActivity extends SshActiveControllerActivity implements
 		}else{
 			//Check if isexecutable, if yes, do this action, then onback
 			button.onPress.command=file.getFullPath();
-			Controller.saveControllers();
+			SshControllerUtils.saveSshConfigurations();
 			onBackPressed();
 		}
 	}

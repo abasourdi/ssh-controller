@@ -7,6 +7,10 @@ import android.graphics.Color;
 
 public class Button implements Serializable {
 
+	/**
+	 * Create a button with the specified design
+	 * @param design design of the button
+	 */
 	public Button(Design design) {
 		uuid = UUID.randomUUID().toString();
 		this.design = design;
