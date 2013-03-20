@@ -148,15 +148,10 @@ public abstract class SshControllerActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//TODO
-		/*
-		if (Controller.controllers == null) {
-			CurrentConfiguration.instance = this;
-			Controller.loadControllers();
+		if(CurrentConfiguration.instance==null){
+			CurrentConfiguration.instance=this;
 		}
-		*/
-
-		if (GlobalConfiguration.isLockScreenEnabled()) {
+		if (SshControllerUtils.isLockScreenEnabled()) {
 			PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
 			if (wakeLock == null) {
 				wakeLock = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK,

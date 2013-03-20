@@ -7,6 +7,11 @@ import com.pumkin.sshcontroller.constants.Values;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 
+/**
+ * Basic templates for the color design button
+ * @author Laurent S.
+ *
+ */
 public class Template {
 
 	public String name;
@@ -119,7 +124,7 @@ public class Template {
 				Values.defaultHeight, defaultAngle);
 
 		template = new Template("Pink oval button", design);
-		res.add(template);
+		//res.add(template);
 		
 		design=design.clone();
 		design.shape=GradientDrawable.RECTANGLE;

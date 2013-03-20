@@ -11,6 +11,7 @@ import com.jcraft.jsch.Session;
 import com.pumkin.sshcontroller.object.GlobalConfiguration;
 import com.pumkin.sshcontroller.object.SshConfiguration;
 import com.pumkin.sshcontroller.object.SshFile;
+import com.pumkin.sshcontroller.utils.SshControllerUtils;
 
 public class SshClient {
 
@@ -99,7 +100,7 @@ public class SshClient {
 		// // command = "ls -lrth '" + path + "'| tr -s ' ' | cut -d' ' -f1,9";
 		// command = "ls -l '" + path + "'";
 		// }
-		if(GlobalConfiguration.islookForHiddenFilesEnabled()){
+		if(SshControllerUtils.islookForHiddenFilesEnabled()){
 			command = "ls -la '" + path + "'";
 		}else{
 			command = "ls -l '" + path + "'";	

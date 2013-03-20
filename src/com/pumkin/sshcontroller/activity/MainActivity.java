@@ -234,7 +234,7 @@ public class MainActivity extends SshControllerActivity implements
 	 * 
 	 */
 	private void startControllerAutomatically() {
-		if (GlobalConfiguration.isAutoConnectEnabled() && autoChoose) {
+		if (SshControllerUtils.isAutoConnectEnabled() && autoChoose) {
 			// Then, if there is a status = true, we connect to it
 			for (int i = 0; i < SshControllerUtils.getControllers().size(); i++) {
 				if (SshControllerUtils.getControllers().get(i).parent.state == Constants._SSHCONFIGURATION_CONNECTED) {
