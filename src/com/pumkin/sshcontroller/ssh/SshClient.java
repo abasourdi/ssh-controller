@@ -110,6 +110,11 @@ public class SshClient {
 		 */
 		ArrayList<String> tmpFiles = execute(command, true);
 		ArrayList<SshFile> res = new ArrayList<SshFile>();
+		int resCode = Integer.parseInt(tmpFiles.get(tmpFiles.size()-1));
+		Log.d(SshClient.class.toString(), "getting code: "+resCode);
+		if(resCode!=0){
+			return null;
+		}
 		for (int i = 1; i < tmpFiles.size() - 1; i++) {
 			// For each file, we get the name and the rights
 			String[] list = tmpFiles.get(i).split(" ");

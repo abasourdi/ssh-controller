@@ -129,7 +129,7 @@ public class Template {
 		design=design.clone();
 		design.shape=GradientDrawable.RECTANGLE;
 		template = new Template("Pink rectangle button", design);
-		res.add(template);
+//		res.add(template);
 		
 		return res;
 	}

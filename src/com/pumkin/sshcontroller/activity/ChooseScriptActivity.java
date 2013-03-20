@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.pumkin.sshcontroller.adapter.ChooseFileAdapter;
 import com.pumkin.sshcontroller.constants.Action;
@@ -92,6 +93,15 @@ public class ChooseScriptActivity extends SshActiveControllerActivity implements
 					}
 					if(currentClient!=null){
 						sshFiles=currentClient.ls(currentPath);
+						if(sshFiles==null){
+							sshFiles=currentClient.ls(currentPath);
+							if(sshFiles==null){
+								//Then, we show a error message
+								Toast.makeText(getApplicationContext(),
+										getText(R.string.could_not_get_file_list),
+										Toast.LENGTH_LONG).show();
+							}
+						}
 					}
 					SshControllerUtils.sendBroadcast(Action._REFRESHSSH);
 				}
@@ -106,7 +116,6 @@ public class ChooseScriptActivity extends SshActiveControllerActivity implements
 	@Override
     public void onAction(Intent intent){
 		String action = intent.getAction();
-		// log our message value
 		Log.i("getting action:", action);
 		if (Action._REFRESHSSH.equals(action)) {
 			if(mProgressDialog!=null && mProgressDialog.isShowing())
