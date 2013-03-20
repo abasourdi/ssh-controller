@@ -16,15 +16,19 @@ public class Button implements Serializable {
 		this.design = design;
 	}
 
+	/**
+	 * Unique uuid that is used as a unique id for the button
+	 */
 	public String uuid;
 
+	/**
+	 * action on press
+	 */
 	public Action onPress = new Action();
-	// If 0, nothing, but if it's positive, we repeat this action with this
-	// interval when the button is pressed
 
-	public String name = "untitled";
-	// Also refered as label
-
+	/**
+	 * Design of the button
+	 */
 	public AbstractDesign design;
 
 	/**
