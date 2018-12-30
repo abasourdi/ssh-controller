@@ -1,0 +1,166 @@
+[
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\layout_menu_rectangular_buttons.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\layout\\menu_rectangular_buttons.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_folder.png.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\drawable-xhdpi\\folder.png"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\anim_push_right_in.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\anim\\push_right_in.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\drawable_controller_state_unknown.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\drawable\\controller_state_unknown.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_edit_button.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\layout\\activity_edit_button.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_color.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\layout\\item_color.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_edit_button_design.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\layout\\activity_edit_button_design.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\drawable_controller_state_offline.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\drawable\\controller_state_offline.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\anim_push_top_out.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\anim\\push_top_out.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\drawable_add_button_pressed.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\drawable\\add_button_pressed.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\anim_push_left_in.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\anim\\push_left_in.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_edit_button_action.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\layout\\activity_edit_button_action.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_template.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\layout\\item_template.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\menu_activity_controller.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\menu\\activity_controller.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_launcher.png.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\drawable-xhdpi\\launcher.png"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_edit_controller.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\layout\\activity_edit_controller.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\drawable_button_simple_red.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\drawable\\button_simple_red.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_controller.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\layout\\activity_controller.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_edit_button_label.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\layout\\activity_edit_button_label.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\menu_activity_controller_edit_mode.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\menu\\activity_controller_edit_mode.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\drawable_controller_state_online.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\drawable\\controller_state_online.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\drawable_add_button_normal.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\drawable\\add_button_normal.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\drawable_button_simple_green.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\drawable\\button_simple_green.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_readable_file.png.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\drawable-xhdpi\\readable_file.png"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\drawable_menu_buttons.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\drawable\\menu_buttons.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\drawable_button_simple_blue.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\drawable\\button_simple_blue.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_add_controller.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\layout\\activity_add_controller.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_choose_script.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\layout\\activity_choose_script.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\anim_push_left_out.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\anim\\push_left_out.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\anim_push_top_in.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\anim\\push_top_in.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_global_configuration.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\layout\\activity_global_configuration.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_executable_file.png.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\drawable-xhdpi\\executable_file.png"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_choose_template.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\layout\\activity_choose_template.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_controller.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\layout\\item_controller.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\anim_push_right_out.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\anim\\push_right_out.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_file.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\layout\\item_file.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\menu_activity_main.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\menu\\activity_main.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\drawable_add_button.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\drawable\\add_button.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\drawable_button_simple_blue_rectangular.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\drawable\\button_simple_blue_rectangular.xml"
+    },
+    {
+        "merged": "G:\\Dev\\ssh-controller\\app\\build\\intermediates\\res\\merged\\debug\\layout_menu_circular_buttons.xml.flat",
+        "source": "G:\\Dev\\ssh-controller\\app\\src\\main\\res\\layout\\menu_circular_buttons.xml"
+    }
+]
