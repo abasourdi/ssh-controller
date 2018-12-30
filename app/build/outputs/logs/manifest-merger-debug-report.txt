@@ -1,141 +1,141 @@
 -- Merging decision tree log ---
 manifest
-ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:2:1-76:12
-INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:2:1-76:12
-INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:2:1-76:12
-INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:2:1-76:12
-INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:2:1-76:12
-INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:2:1-76:12
-INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:2:1-76:12
+ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:2:1-59:12
+INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:2:1-59:12
+INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:2:1-59:12
+INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:2:1-59:12
+INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:2:1-59:12
+INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:2:1-59:12
+INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:2:1-59:12
 	package
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:3:5-48
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:2:11-54
 		INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml
 		INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml
 	android:versionName
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:5:5-30
 		INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:2:1-59:12
+		INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:2:1-59:12
 		INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:2:11-69
-	android:versionCode
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:4:5-28
-		INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml
-		INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml
-uses-sdk
-ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:7:5-9:41
-INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:7:5-9:41
-INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:7:5-9:41
-INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:7:5-9:41
-INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:7:5-9:41
-	android:targetSdkVersion
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:9:9-38
-		INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml
-		INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml
-	android:minSdkVersion
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:8:9-34
-		INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml
-		INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:3:5-63
 uses-permission#android.permission.INTERNET
-ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:11:9-70
+ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:5:5-67
 	android:name
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:11:26-68
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:5:22-64
 uses-permission#android.permission.WAKE_LOCK
-ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:12:9-71
+ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:6:5-68
 	android:name
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:12:26-69
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:6:22-65
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:13:9-84
+ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:7:5-81
 	android:name
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:13:26-82
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:7:22-78
 application
-ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:16:5-74:19
+ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:10:5-57:19
 	android:label
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:19:9-41
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:13:9-41
 	android:icon
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:18:9-42
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:12:9-42
 	android:allowBackup
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:17:9-35
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:11:9-35
 	android:theme
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:20:9-62
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:14:9-62
 activity#com.pumkin.sshcontroller.activity.MainActivity
-ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:21:9-28:20
+ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:15:9-22:20
 	android:label
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:23:13-45
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:17:13-45
 	android:name
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:22:13-74
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:16:13-74
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:24:13-27:29
+ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:18:13-21:29
 action#android.intent.action.MAIN
-ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:25:17-69
+ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:19:17-69
 	android:name
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:25:25-66
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:19:25-66
 category#android.intent.category.LAUNCHER
-ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:26:17-77
+ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:20:17-77
 	android:name
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:26:27-74
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:20:27-74
 activity#com.pumkin.sshcontroller.activity.AddControllerActivity
-ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:29:9-32:20
+ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:23:9-25:48
+	android:label
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:25:13-45
+	android:name
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:24:13-83
+activity#com.pumkin.sshcontroller.activity.ControllerActivity
+ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:26:9-28:48
+	android:label
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:28:13-45
+	android:name
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:27:13-80
+activity#com.pumkin.sshcontroller.activity.EditControllerActivity
+ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:29:9-31:48
 	android:label
 		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:31:13-45
 	android:name
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:30:13-83
-activity#com.pumkin.sshcontroller.activity.ControllerActivity
-ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:33:9-36:20
-	android:label
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:35:13-45
-	android:name
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:34:13-80
-activity#com.pumkin.sshcontroller.activity.EditControllerActivity
-ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:37:9-40:20
-	android:label
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:39:13-45
-	android:name
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:38:13-84
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:30:13-84
 activity#com.pumkin.sshcontroller.activity.EditButtonActivity
-ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:41:9-44:20
+ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:32:9-34:48
+	android:label
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:34:13-45
+	android:name
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:33:13-80
+activity#com.pumkin.sshcontroller.activity.EditButtonDesignActivity
+ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:35:9-37:48
+	android:label
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:37:13-45
+	android:name
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:36:13-86
+activity#com.pumkin.sshcontroller.activity.EditButtonLabelActivity
+ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:38:9-40:48
+	android:label
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:40:13-45
+	android:name
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:39:13-85
+activity#com.pumkin.sshcontroller.activity.EditButtonActionActivity
+ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:41:9-43:48
 	android:label
 		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:43:13-45
 	android:name
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:42:13-80
-activity#com.pumkin.sshcontroller.activity.EditButtonDesignActivity
-ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:45:9-48:20
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:42:13-86
+activity#com.pumkin.sshcontroller.activity.ChooseScriptActivity
+ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:44:9-46:48
 	android:label
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:47:13-45
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:46:13-45
 	android:name
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:46:13-86
-activity#com.pumkin.sshcontroller.activity.EditButtonLabelActivity
-ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:49:9-52:20
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:45:13-82
+activity#com.pumkin.sshcontroller.activity.ChooseColorActivity
+ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:47:9-49:48
 	android:label
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:51:13-45
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:49:13-45
 	android:name
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:50:13-85
-activity#com.pumkin.sshcontroller.activity.EditButtonActionActivity
-ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:53:9-56:20
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:48:13-81
+activity#com.pumkin.sshcontroller.activity.ChooseTemplateActivity
+ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:50:9-52:48
+	android:label
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:52:13-45
+	android:name
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:51:13-84
+activity#com.pumkin.sshcontroller.activity.GlobalConfigurationActivity
+ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:53:9-55:48
 	android:label
 		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:55:13-45
 	android:name
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:54:13-86
-activity#com.pumkin.sshcontroller.activity.ChooseScriptActivity
-ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:57:9-60:20
-	android:label
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:59:13-45
-	android:name
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:58:13-82
-activity#com.pumkin.sshcontroller.activity.ChooseColorActivity
-ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:61:9-64:20
-	android:label
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:63:13-45
-	android:name
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:62:13-81
-activity#com.pumkin.sshcontroller.activity.ChooseTemplateActivity
-ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:65:9-68:20
-	android:label
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:67:13-45
-	android:name
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:66:13-84
-activity#com.pumkin.sshcontroller.activity.GlobalConfigurationActivity
-ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:69:9-72:20
-	android:label
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:71:13-45
-	android:name
-		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:70:13-89
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml:54:13-89
+uses-sdk
+INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml
+INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml
+INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml
+INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml
+		INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml
+		ADDED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml
+		INJECTED from G:\Dev\ssh-controller\app\src\main\AndroidManifest.xml

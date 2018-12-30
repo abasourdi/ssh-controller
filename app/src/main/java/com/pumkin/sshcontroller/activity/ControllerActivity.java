@@ -5,7 +5,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -33,6 +35,7 @@ public class ControllerActivity extends SshActiveControllerActivity implements
 			enableEditMode(null);
 		}
 
+        registerForContextMenu(relativeLayout);
 	}
 
 	@Override
@@ -49,11 +52,11 @@ public class ControllerActivity extends SshActiveControllerActivity implements
 		}
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_controller, menu);
-		return true;
+	public void onCreateContextMenu(ContextMenu menu, View v,
+			ContextMenu.ContextMenuInfo menuInfo) {
+		super.onCreateContextMenu(menu, v, menuInfo);
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.activity_controller, menu);
 	}
 
 	@Override

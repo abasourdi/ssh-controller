@@ -5,13 +5,17 @@ import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -42,6 +46,8 @@ public class EditControllerActivity extends SshActiveControllerActivity
 		relativeLayout = (RelativeLayout) findViewById(R.id.controller_layout);
 		Log.i(this.getClass().getName(), "nb buttons: "
 				+ CurrentConfiguration.controller.buttons.size());
+
+		registerForContextMenu(relativeLayout);
 	}
 
 	@Override
@@ -52,12 +58,12 @@ public class EditControllerActivity extends SshActiveControllerActivity
 					CurrentConfiguration.controller, this, this, this);
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_controller_edit_mode, menu);
-		return true;
-	}
+    public void onCreateContextMenu(ContextMenu menu, View v,
+            ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.activity_controller_edit_mode, menu);
+    }
 
 	@Override
 	public void onBackPressed() {
